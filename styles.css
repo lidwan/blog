@@ -32,3 +32,265 @@ body {
     color: white;
     margin-top: 2rem;
   }
+
+
+/*resets*/
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* width: 100%;
+    height: 100%; */
+    margin: 0;
+    /* box-sizing: content-box; */
+
+}
+
+ul {
+    margin: 0;
+}
+
+/* reset links */
+a:link { 
+    text-decoration: none; 
+} 
+
+a:visited { 
+    text-decoration: none; 
+} 
+
+a:hover { 
+    text-decoration: none; 
+} 
+
+a:active { 
+    text-decoration: none; 
+}
+
+/* styles */
+
+
+:root {
+    --color-links:rgb(114, 160, 197);
+    --color-links-darker:rgb(58, 80, 97);
+}
+body {
+    background-color: black;
+    color: white;
+    font-size: 18px;
+}
+
+.indexCont {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2.5vw;
+}
+
+nav ul li a {
+    font-size: 1.25rem;
+}
+
+a{
+    color: white;
+}
+
+.content {
+    width: 60vw;
+    margin: 0 0 3vh 3vh;
+}
+
+.hello {
+    font-size: 14.5rem;
+}
+
+.details {
+    font-size: 3.1rem;
+}
+
+
+/* giving links color */
+.link {
+    color: var(--color-links);
+}
+
+
+/* highlight current page by making it bolder */
+.current {
+    font-weight: 900;
+}
+
+.name {
+    font-weight: 900;
+}
+
+a:hover {
+    color: var(--color-links-darker)
+}
+
+nav a:hover {
+    color: var(--color-links);
+}
+
+.am {
+    font-size: 3.5rem;
+}
+
+.am-p{
+    font-size: 2rem;
+}
+
+.about {
+    width: 100vw; 
+    height: 70vh;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+ 
+ .cont {
+     display: flex;
+     flex-direction: column;
+ }
+
+ svg {
+    background-color: aliceblue;
+    border-radius: 5%;
+    width: 3.5rem;
+    padding: 5px;
+}
+
+
+.contact {
+    height: 90vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    font-size: 2rem;
+}
+
+.git {
+    font-size: 5.5rem;
+    font-weight: bold;
+}   
+
+.contforcontbecynot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+}
+.cardsCont {
+    height: 90vh;
+    width: 1500px;
+    margin: 0px 5vw 0px 5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 5vw;
+
+    flex-wrap: wrap;
+    row-gap: 10vw;
+    
+}
+.card {
+    background-color: var(--color-links-darker);
+    text-align: center;
+}
+
+.card-body {
+    color: white;
+    
+}
+
+.btnCont {
+    display: flex;
+    justify-content: center;
+    gap: 1vw;
+}
+.card-link:hover {
+    color: rgb(148, 189, 221);;
+}
+@media screen and (max-width: 1200px) {
+    .hello {
+        font-size: 13rem;
+    }
+    
+    .details {
+        font-size: 2.5rem;
+    }
+    .contforcontbecynot {
+        margin-top: 5vh;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    .hello {
+        font-size: 7rem;
+    }
+    
+    .details {
+        font-size: 1.4rem;
+    }
+    .indexCont {
+        justify-content: flex-start;
+    }
+    .content {
+        height: 80vh;
+        align-self: center;
+        display: flex;
+        flex-direction: column;
+        gap:5vh;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .am {
+        font-size: 2.5rem;
+    }
+    
+    .am-p{
+        font-size: 1.4rem;
+    }
+    .cont {
+        margin: 3.5vw
+    }
+    .contact {
+        font-size: 1.5rem;
+    }
+    .git {
+        font-size: 4rem;
+
+    }
+    svg {
+
+        width: 3rem;
+
+    }
+
+    .contforcontbecynot {
+        margin-top: 5vh;
+    }
+}
