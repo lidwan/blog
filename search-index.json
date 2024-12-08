@@ -1,0 +1,15 @@
+[
+    {
+      "title": "My Blog",
+      "url": "/posts/hello-world.html",
+      "description": "Welcome to my blog! This is my first post. I’ll share my thoughts on tech, coding, and more.",
+      "tags": ["first", "post", "hello"]
+    },
+    {
+      "title": "Must have Open Source software",
+      "url": "/pages/must-have-open-source-software.html",
+      "description": "Open source? transparency and community-driven innovation.",
+      "tags": ["open", "source", "vpn", "encryption", "2fa", "password", "manager", "usb", "list"]
+    }
+  ]
+  
