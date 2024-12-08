@@ -316,8 +316,56 @@ nav a:hover {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    
 }
 
 .recents a:hover{
     color: #8b8888;
 }
+
+#search-bar {
+    margin-bottom: 1rem;
+  }
+  .list-group-item small {
+    color: gray;
+  }
+
+  #search-bar {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  #search-bar.show {
+    display: block;
+    opacity: 1;
+  }
+  
+  svg {
+    background: none; /* Ensure the SVG has no background */
+  }
+
+  .black-bg{
+    background-color: rgb(44, 43, 43);
+    color: white;
+    margin-bottom: 1rem;
+    
+  } 
+  
+  .black-bg:hover{
+    background-color: rgb(95, 122, 138);
+    color: black;
+    margin-bottom: 1rem;
+    
+  } 
+  .credit {
+    width: 100vw;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+  }
+
+  #searchresfor {
+    margin-bottom: 2rem;
+  }

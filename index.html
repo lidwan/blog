@@ -1,3 +1,4 @@
+<!-- why are you looking at my code?? ik it sucks i'm not a web developer -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +8,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" defer></script>
   <link rel="stylesheet" href="styles.css">
+
+  <script src="searchIcon.js" defer></script>
 </head>
 <body>
     <div class="indexCont">
@@ -18,6 +21,35 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <!-- Search Icon -->
+                        <a href="#" id="search-icon">
+                            <!-- SVG Icon for the Search -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                            
+                        </a>
+                        
+                        <!-- Hidden Search Form -->
+                        <ul class="navbar-nav">
+                            <li class="nav-item" id="search-bar" style="display: none;">
+                            <div class="container">
+                                <form id="search-form" action="/search-results.html" method="GET" class="d-flex">
+                                <input 
+                                    type="text" 
+                                    id="query" 
+                                    name="query" 
+                                    class="form-control me-2" 
+                                    placeholder="Enter search query..." 
+                                    required>
+                                <button type="submit" class="btn btn-primary">Search</button>
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
                     <li class="nav-item">
                         <a class="nav-link" href="https://loayidwan.com/">Home</a>
                     </li>
@@ -53,10 +85,19 @@
                         <p>Discover the ultimate list of must-have open-source software that can transform your tech experience!</p>
                 </article>
             </a>
+            <a href="posts/hello-world.html">
+                <article class="recentArticle">
+                        <div class="postedBy meta">
+                            Posted on December 7, 2024 by Loay Idwan. 
+                        </div>
+                        <h3>Hello World</h3>
+                        <p>An introduction to my blog. Learn what to expect here!</p>
+                </article>
+            </a>
             
         </main>
         <footer>
-            <p>&copy; 2024 Loay's Blog</p>
+            <p>&copy; 2024 Loay's Blog, Icons by <a href="https://icons8.com">icons8</a></p>
         </footer>
     </div>
 </body>
