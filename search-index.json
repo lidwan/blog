@@ -10,6 +10,11 @@
       "url": "/posts/must-have-open-source-software.html",
       "description": "Open source? transparency and community-driven innovation.",
       "tags": ["open", "source", "vpn", "encryption", "2fa", "password", "manager", "usb", "list"]
+    },
+    {
+      "title": "Top .bashrc Aliases to Save Time",
+      "url": "/posts/top-bashrc-aliases.html",
+      "description": "Boost your Linux productivity with this guide to the top .bashrc aliases! Learn how to save time with custom shortcuts for file management, system commands, Git, and more. Perfect for developers, sysadmins, and power users looking to streamline their workflow",
+      "tags": ["bashrc", "bashrc", "alias", "time", "save", "top", "file", "command"]
     }
   ]
-  
