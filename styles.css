@@ -175,7 +175,15 @@ nav a:hover {
     padding: 5px;
 }
 
-
+.strong900 {
+    font-weight: 900;
+}
+#results-container a {
+    padding: 6%;
+}
+#results-container a h5 {
+    font-weight: 900;
+}
 .contact {
     height: 90vh;
 
@@ -245,6 +253,7 @@ nav a:hover {
 }
 
 @media screen and (max-width: 620px) {
+
     .hello {
         font-size: 7rem;
     }
@@ -302,9 +311,9 @@ nav a:hover {
 .recentArticle{
     background-color: #333;
     border-radius: 3%;
-    padding: 3%;
+    padding: 6%;
 
-    width: 55vw;
+    /* width: 55vw; */
 
     display: flex;
     flex-direction: column;
@@ -316,9 +325,12 @@ nav a:hover {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+
     
 }
-
+.overflowText {
+    overflow-wrap: break-word;
+}
 .recents a:hover{
     color: #8b8888;
 }
