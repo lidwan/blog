@@ -239,6 +239,11 @@ nav a:hover {
 .card-link:hover {
     color: rgb(148, 189, 221);;
 }
+
+.centerVideo {
+    display: flex;
+    justify-content: center;
+}
 @media screen and (max-width: 1200px) {
     .hello {
         font-size: 13rem;
