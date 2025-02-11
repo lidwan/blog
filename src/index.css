@@ -39,7 +39,12 @@ html {
 }
 
 #root {
+    width: 100vw;
+    height: 100vh;
     background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
 }
 :root {
@@ -52,6 +57,13 @@ body {
     background-color: black;
     color: white;
     font-size: 18px;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
 }
 
 /*main {*/
