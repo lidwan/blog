@@ -1,0 +1,111 @@
+/*resets*/
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    margin: 0;
+}
+
+/* reset links */
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+
+/* styles */
+html {
+    background-color: black;
+
+}
+
+#root {
+    background-color: black;
+
+}
+:root {
+    --color-links:rgb(114, 160, 197);
+    --color-links-darker:rgb(58, 80, 97);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: white;
+    font-size: 18px;
+}
+
+/*main {*/
+/*    padding: 2rem;*/
+/*    max-width: 800px;*/
+/*    margin: auto;*/
+/*}*/
+
+/*article {*/
+/*    margin-bottom: 2rem;*/
+/*}*/
+
+a {
+    text-decoration: none;
+    color: var(--color-links);
+}
+
+a:hover {
+    text-decoration: underline;
+    --color-links-darker:rgb(58, 80, 97);
+}
+
+nav a:hover {
+    text-decoration: none;
+}
+
+/*footer {*/
+/*    text-align: center;*/
+/*    padding: 1rem 0;*/
+/*    background-color: #333;*/
+/*    color: white;*/
+/*    margin-top: 2rem;*/
+/*}*/
+
+nav {
+    margin: 15px;
+}
+
+nav ul {
+    gap: 2.5vw;
+}
+
+nav {
+    font-size: 1.4rem;
+}
+#title {
+    font-size: 1.5rem;
+}
+
+
+@media screen and (max-width: 1200px) {
+
+}
+
+@media screen and (max-width: 620px) {
+
+}
