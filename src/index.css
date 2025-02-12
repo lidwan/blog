@@ -86,8 +86,8 @@ a:hover {
     --color-links-darker:rgb(58, 80, 97);
 }
 
-nav a:hover {
-    text-decoration: none;
+a:hover{
+    text-decoration: none; !important;
 }
 
 /*footer {*/
@@ -122,10 +122,35 @@ nav {
     align-items: center;
 }
 
+.mainHomeContainer {
+    width: 75%;
+    max-width: 800px;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 3vw;
+}
+
+.card{
+    box-shadow: #7f7f7f 5px 5px 10px 2px;
+}
+.card-footer{
+    font-size: 1rem;
+}
+
+.cardHover:hover{
+    box-shadow: #a4a4a4 10px 10px 15px 2px;
+}
 @media screen and (max-width: 1200px) {
+    .mainHomeContainer {
+        gap: 4vw;
+    }
 
 }
 
 @media screen and (max-width: 620px) {
+    .mainHomeContainer {
+        gap: 6vw;
+    }
 
 }
