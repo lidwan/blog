@@ -1,0 +1,177 @@
+/*resets*/
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    margin: 0;
+}
+
+/* reset links */
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+
+/* styles */
+html {
+    background-color: black;
+
+}
+
+#root {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 100%;
+
+}
+:root {
+    --color-links:rgb(114, 160, 197);
+    --color-links-darker:rgb(58, 80, 97);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: white;
+    font-size: 18px;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 16px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-links);
+}
+
+a:hover {
+    text-decoration: underline;
+    --color-links-darker:rgb(58, 80, 97);
+}
+
+a:hover{
+    text-decoration: none; !important;
+}
+
+nav {
+    margin: 15px;
+}
+
+nav ul {
+    gap: 2.5vw;
+}
+
+nav {
+    font-size: 1.4rem;
+}
+#title {
+    font-size: 1.5rem;
+}
+
+.pageNotFoundContainer{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainHomeContainer {
+    width: 75%;
+    max-width: 800px;
+    align-self: center;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    margin: 4vh 0;
+    overflow-wrap: break-word;
+
+}
+.rec {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.card{
+    box-shadow: #7f7f7f 5px 5px 10px 2px;
+}
+.card-title {
+    padding-bottom: 1vh;
+}
+.card-footer{
+    font-size: 1rem;
+}
+
+.cardHover:hover{
+    box-shadow: #a4a4a4 10px 10px 15px 2px;
+}
+
+.centerVideo {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    padding-top: 56.25%;
+    overflow: hidden;
+}
+
+iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+@media screen and (max-width: 1200px) {
+    .mainHomeContainer {
+        gap: 4vw;
+        margin: 3vh 0;
+    }
+    .footer {
+        padding: 3vw;
+    }
+
+}
+
+@media screen and (max-width: 620px) {
+    .mainHomeContainer {
+        gap: 8vw;
+        margin: 5vh 0;
+    }
+    .footer {
+        padding: 5vw;
+    }
+
+}
