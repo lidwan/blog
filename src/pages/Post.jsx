@@ -25,12 +25,12 @@ export default function Post() {
         return <NotFound />
 
     return (
-        <div>
+        <>
             <NavBar/>
             <div className="mainHomeContainer">
                 <ReactMarkdown rehypePlugins={[rehypeRaw]}>{content}</ReactMarkdown>
             </div>
             <Footer/>
-        </div>
+        </>
     );
 }
