@@ -23,14 +23,6 @@ const posts = [
         tags: ["open", "source", "vpn", "encryption", "2fa", "password", "manager", "usb", "list"],
         date: "December 8, 2024"
     },
-    {
-        id: "my-blog",
-        title: "My Blog",
-        description: "Welcome to my blog! This is my first post. I’ll share my thoughts on tech, coding, and more.",
-        file: "/posts/my-blog.md",
-        tags: ["first", "post", "hello"],
-        date: "December 7, 2024"
-    },
 ];
 
 export default posts;
