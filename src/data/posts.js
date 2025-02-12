@@ -10,7 +10,7 @@ const posts = [
     {
         id: "top-bashrc-aliases",
         title: "Top .bashrc Aliases to Save Time",
-        description: "Boost your Linux productivity with this guide to the top .bashrc aliases! Learn how to save time with custom shortcuts for file management, system commands, Git, and more. Perfect for developers, sysadmins, and power users looking to streamline their workflow",
+        description: "Boost your Linux productivity with this guide to the top .bashrc aliases!",
         file: "/posts/top-bashrc-aliases.md",
         tags: ["bashrc", "bashrc", "alias", "time", "save", "top", "file", "command"],
         date: "January 23, 2025"
