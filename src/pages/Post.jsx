@@ -26,6 +26,7 @@ export default function Post() {
 
     return (
         <>
+            <title>{ `${post.title} | Loay's Blog` }</title>
             <NavBar/>
             <div className="mainHomeContainer">
                 <ReactMarkdown rehypePlugins={[rehypeRaw]}>{content}</ReactMarkdown>
