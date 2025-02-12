@@ -1,22 +1,30 @@
 import {Link} from "react-router-dom";
 
-export default function PostCard(){
+export default function PostCard({post}){
     return (
-        <Link to="/">
-            <div className="card text-center bg-dark rounded text-white cardHover">
+        <Link to={`/posts/${post.id}`}>
+            <div className="card text-center bg-dark rounded text-white cardHover" >
                 <div className="card-body">
-                    <h5 className="card-title">
-                        This is an example post title
+                    <h5 className="card-title fw-bold" >
+                        {post.title}
                     </h5>
                     <p className="card-text">
-                        This is the example post content, qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnm<br/>
-                        qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnm
+                        {post.description}
                     </p>
                 </div>
                 <div className="card-footer opacity-50 font-monospace">
-                    Posted on Jan 3rd, 2025. (Example post date)
+                    Posted on {post.date}
                 </div>
             </div>
         </Link>
     )
 }
+
+PostCard.propTypes = {
+    post: ({
+        id: String,
+        title: String,
+        description: String,
+        date: String,
+    })
+};
