@@ -2,8 +2,7 @@ import NavBar from "../components/NavBar.jsx";
 import Footer from "../components/Footer.jsx";
 import PostCard from "../components/PostCard.jsx";
 
-
-function Home() {
+export default function Home() {
     return (
         <>
             <NavBar />
@@ -14,5 +13,3 @@ function Home() {
         </>
     )
 }
-
-export default Home

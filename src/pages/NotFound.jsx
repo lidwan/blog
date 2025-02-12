@@ -2,7 +2,7 @@ import NavBar from "../components/NavBar.jsx";
 import Footer from "../components/Footer.jsx";
 import {Link} from "react-router-dom";
 
-function NotFound() {
+export default function NotFound() {
     return (
         <>
             <header><title>404 Page Not Found! | Loay&#39;s blog</title></header>
@@ -16,5 +16,3 @@ function NotFound() {
 
     )
 }
-
-export default NotFound

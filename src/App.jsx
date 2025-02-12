@@ -3,7 +3,7 @@ import Home from "./pages/Home";
 import Post from "./pages/Post";
 import NotFound from "./pages/NotFound.jsx";
 
-function App() {
+export default function App() {
   return (
       <Router>
           <Routes>
@@ -14,5 +14,3 @@ function App() {
       </Router>
   )
 }
-
-export default App
