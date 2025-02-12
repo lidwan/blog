@@ -1,6 +1,6 @@
-import NavBar from "../components/NavBar.jsx";
-import Footer from "../components/Footer.jsx";
-import PostCard from "../components/PostCard.jsx";
+import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
+import PostCard from "../components/PostCard";
 import posts from "../data/posts.js";
 
 export default function Home() {

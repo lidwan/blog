@@ -2,10 +2,10 @@ import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
-import NotFound from "./NotFound.jsx";
+import NotFound from "./NotFound";
 import posts from "../data/posts.js";
-import NavBar from "../components/NavBar.jsx";
-import Footer from "../components/Footer.jsx";
+import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 
 export default function Post() {
     const { postId } = useParams();

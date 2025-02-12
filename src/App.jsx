@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Post from "./pages/Post";
-import NotFound from "./pages/NotFound.jsx";
+import NotFound from "./pages/NotFound";
 
 export default function App() {
   return (
