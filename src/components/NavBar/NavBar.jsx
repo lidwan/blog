@@ -20,7 +20,7 @@ function NavBar() {
                         </li>
                         <li className="nav-item">
                             <a className="nav-link active" aria-current="page"
-                               href="/">Blog</a>
+                               href="https://blog.loayidwan.com/">Blog</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="https://loayidwan.com/pages/projects.html">Projects</a>
