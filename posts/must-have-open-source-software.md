@@ -150,7 +150,7 @@ Ventoy provides:
 - Vast range of operating systems, including Linux distros, Windows versions, and even tools like GParted
 - Persistent storage for some Linux distributions, enabling you to save files and settings across sessions
 
-Take a look at [my blog post](blog.loayidwan.com/posts/how-to-install-ventoy-on-a-usb-flash-drive) about installing Ventoy on a USB drive if you are interested.
+Take a look at [my blog post](https://blog.loayidwan.com/#/posts/how-to-install-ventoy-on-a-usb-flash-drive) about installing Ventoy on a USB drive if you are interested.
 
 ## **9. [OBS](https://obsproject.com/) (Video recording and live streaming)**
 
