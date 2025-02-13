@@ -23,12 +23,51 @@ export default function Post() {
         }
     }, [post]);
 
+    //runs on post change
+    useEffect(() => {
+        if (post){
+            // changing the page title
+            document.querySelector("title").innerHTML =`${post.title} | Loay's Blog`;
+
+            const jsonLd = {
+                "@context": "https://schema.org",
+                "@type": "Article",
+                "headline": post.title,
+                "description": post.description,
+                "author": {
+                    "@type": "Person",
+                    "name": "Loay Idwan"
+                },
+                "publisher": {
+                    "@type": "Person",
+                    "name": "Loay's Blog",
+                    "url": "https://blog.loayidwan.com"
+                },
+                "datePublished": post.dateCreated,
+                "dateModified": post.dateModified,
+                "url": `https://blog.loayidwan.com/#/posts/${post.id}`,
+            };
+            // removing the old json-ld-script and replacing it by a new one for this post
+            const oldJsonLd = document.getElementById("json-ld-script");
+            if (oldJsonLd) {
+                oldJsonLd.remove();
+            }
+
+            // inserting the new json-ld-script
+            const script = document.createElement("script");
+            script.type = "application/ld+json";
+            script.id = "json-ld-script";
+            script.textContent = JSON.stringify(jsonLd);
+            document.head.appendChild(script);
+        }
+    }, [post])
+
     if(!post)
         return <NotFound />
 
+
     return (
         <>
-            <title>{ `${post.title} | Loay's Blog` }</title>
             <NavBar/>
             <div className="centerContainer">
                 <ReactMarkdown rehypePlugins={[rehypeRaw]}>{content}</ReactMarkdown>

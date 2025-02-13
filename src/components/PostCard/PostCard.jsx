@@ -15,7 +15,7 @@ export default function PostCard({post}){
                     </p>
                 </div>
                 <div className="card-footer opacity-50 font-monospace">
-                    Posted on {post.date}
+                    Posted on {post.dateCreated}
                 </div>
             </div>
         </Link>
