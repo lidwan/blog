@@ -5,7 +5,8 @@ const posts = [
         description: "A step-by-step guide to installing Ventoy on a USB flash drive, enabling easy multi-boot setup for ISO files.",
         file: "/posts/how-to-install-ventoy-on-a-usb-flash-drive.md",
         tags: ["open", "source", "drive", "ventoy", "ISO", "Linux", "Windows", "usb", "multiple"],
-        date: "January 28, 2025"
+        dateCreated: "January 28, 2025",
+        dateModified: "January 28, 2025"
     },
     {
         id: "top-bashrc-aliases",
@@ -13,7 +14,8 @@ const posts = [
         description: "Boost your Linux productivity with this guide to the top .bashrc aliases!",
         file: "/posts/top-bashrc-aliases.md",
         tags: ["bashrc", "bashrc", "alias", "time", "save", "top", "file", "command"],
-        date: "January 23, 2025"
+        dateCreated: "January 23, 2025",
+        dateModified: "January 23, 2025"
     },
     {
         id: "must-have-open-source-software",
@@ -21,7 +23,8 @@ const posts = [
         description: "Open source? transparency and community-driven innovation.",
         file: "/posts/must-have-open-source-software.md",
         tags: ["open", "source", "vpn", "encryption", "2fa", "password", "manager", "usb", "list"],
-        date: "December 8, 2024"
+        dateCreated: "December 8, 2024",
+        dateModified: "February 12, 2025"
     },
 ];
 
