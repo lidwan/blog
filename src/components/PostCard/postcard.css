@@ -1,0 +1,17 @@
+.card{
+    box-shadow: #7f7f7f 5px 5px 10px 2px;
+}
+.card-title {
+    padding-bottom: 1vh;
+}
+.card-footer{
+    font-size: 1rem;
+}
+
+.cardHover:hover{
+    box-shadow: #a4a4a4 10px 10px 15px 2px;
+}
+
+.post-card:hover{
+    text-decoration: none;
+}

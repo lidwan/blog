@@ -2,10 +2,12 @@ import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
-import NotFound from "./NotFound";
-import posts from "../data/posts.js";
-import NavBar from "../components/NavBar";
-import Footer from "../components/Footer";
+import NotFound from "../NotFound/NotFound.jsx";
+import posts from "../../data/posts.js";
+import NavBar from "../../components/NavBar/NavBar.jsx";
+import Footer from "../../components/Footer/Footer.jsx";
+import './post.css'
+
 
 export default function Post() {
     const { postId } = useParams();
@@ -28,7 +30,7 @@ export default function Post() {
         <>
             <title>{ `${post.title} | Loay's Blog` }</title>
             <NavBar/>
-            <div className="mainHomeContainer">
+            <div className="centerContainer">
                 <ReactMarkdown rehypePlugins={[rehypeRaw]}>{content}</ReactMarkdown>
             </div>
             <Footer/>

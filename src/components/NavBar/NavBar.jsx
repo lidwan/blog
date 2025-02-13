@@ -1,3 +1,5 @@
+import './navbar.css'
+
 function NavBar() {
     return (
         <nav className="navbar navbar-expand-lg bg-black navbar-dark">
@@ -18,7 +20,7 @@ function NavBar() {
                         </li>
                         <li className="nav-item">
                             <a className="nav-link active" aria-current="page"
-                               href="/">Blog</a>
+                               href="/public">Blog</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="https://loayidwan.com/pages/projects.html">Projects</a>

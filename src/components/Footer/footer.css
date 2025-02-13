@@ -1,0 +1,19 @@
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 16px;
+}
+
+@media screen and (max-width: 1200px) {
+    .footer {
+        padding: 3vw;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    .footer {
+        padding: 5vw;
+    }
+}

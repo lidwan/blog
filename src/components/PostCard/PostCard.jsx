@@ -1,8 +1,10 @@
 import {Link} from "react-router-dom";
+import './postcard.css'
+
 
 export default function PostCard({post}){
     return (
-        <Link to={`/posts/${post.id}`}>
+        <Link to={`/posts/${post.id}`} className={'post-card'}>
             <div className="card text-center bg-dark rounded text-white cardHover" >
                 <div className="card-body">
                     <h5 className="card-title fw-bold" >

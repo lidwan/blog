@@ -1,6 +1,8 @@
-import NavBar from "../components/NavBar.jsx";
-import Footer from "../components/Footer.jsx";
+import NavBar from "../../components/NavBar/NavBar.jsx";
+import Footer from "../../components/Footer/Footer.jsx";
 import {Link} from "react-router-dom";
+import './notfound.css'
+
 
 export default function NotFound() {
     return (

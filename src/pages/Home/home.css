@@ -1,0 +1,19 @@
+.recents {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.welcomeToBlog {
+    margin-bottom: 2vh;
+    font-weight: bold;
+}
+
+.sharing {
+    font-size: 24px;
+}
+
+@media screen and (max-width: 620px) {
+    .sharing {
+        font-size: 18px;
+    }
+}
