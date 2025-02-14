@@ -9,29 +9,23 @@
 
   <url>
     <loc>https://blog.loayidwan.com/</loc>
-    <lastmod>2025-01-28T20:10:46+00:00</lastmod>
+    <lastmod>2025-02-14T16:02:20+00:00</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://blog.loayidwan.com/posts/How-to-install-Ventoy-on-a-USB-flash-drive.html</loc>
-    <lastmod>2025-01-28T20:10:46+00:00</lastmod>
+    <loc>https://blog.loayidwan.com/#/posts/how-to-install-ventoy-on-a-usb-flash-drive</loc>
+    <lastmod>2025-02-14T16:02:20+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://blog.loayidwan.com/posts/top-bashrc-aliases.html</loc>
-    <lastmod>2025-01-28T20:10:46+00:00</lastmod>
-    <priority>0.80</priority>
+    <loc>https://blog.loayidwan.com/#/posts/top-bashrc-aliases</loc>
+    <lastmod>2025-02-14T16:02:20+00:00</lastmod>
+    <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://blog.loayidwan.com/posts/must-have-open-source-software.html</loc>
-    <lastmod>2025-01-28T20:10:46+00:00</lastmod>
-    <priority>0.80</priority>
+    <loc>https://blog.loayidwan.com/#/posts/must-have-open-source-software</loc>
+    <lastmod>2025-02-14T16:02:20+00:00</lastmod>
+    <priority>0.60</priority>
   </url>
-  <url>
-    <loc>https://blog.loayidwan.com/posts/hello-world.html</loc>
-    <lastmod>2025-01-28T20:10:46+00:00</lastmod>
-    <priority>0.80</priority>
-  </url>
-
 
 </urlset>
