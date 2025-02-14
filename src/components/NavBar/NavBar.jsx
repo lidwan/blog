@@ -1,4 +1,5 @@
 import './navbar.css'
+import SearchIcon from "../Search/SearchIcon.jsx";
 
 function NavBar() {
     return (
@@ -11,7 +12,7 @@ function NavBar() {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav ms-auto">
-
+                        <SearchIcon />
                         <li className="nav-item">
                             <a className="nav-link" href="https://loayidwan.com/">Home</a>
                         </li>
