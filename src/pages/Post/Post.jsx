@@ -1,4 +1,4 @@
-import {useParams} from "react-router-dom";
+import {useParams, useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
@@ -13,6 +13,11 @@ export default function Post() {
     const { postId } = useParams();
     const post = posts.find((p) => p.id === postId);
     const [content, setContent] = useState("");
+    const location = useLocation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [location]);
 
     useEffect(() => {
         if (post) {
