@@ -25,3 +25,10 @@ iframe {
     height: 100%;
     border: 0;
 }
+
+.scrollUpButtonContainer {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    margin-bottom: 3vh;
+}

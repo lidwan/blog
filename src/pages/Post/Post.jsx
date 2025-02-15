@@ -67,6 +67,10 @@ export default function Post() {
         }
     }, [post])
 
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
     if(!post)
         return <NotFound />
 
@@ -76,6 +80,9 @@ export default function Post() {
             <NavBar/>
             <div className="centerContainer">
                 <ReactMarkdown rehypePlugins={[rehypeRaw]}>{content}</ReactMarkdown>
+            </div>
+            <div className="scrollUpButtonContainer">
+                <button type="button" className="btn btn-dark" onClick={scrollToTop}>Scroll back up?</button>
             </div>
             <Footer/>
         </>
