@@ -17,17 +17,17 @@ function NavBar() {
                             <a className="nav-link" href="https://loayidwan.com/">Home</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="https://loayidwan.com/pages/about.html">About</a>
+                            <a className="nav-link" href="https://loayidwan.com/#about">About</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link active" aria-current="page"
                                href="https://blog.loayidwan.com/">Blog</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="https://loayidwan.com/pages/projects.html">Projects</a>
+                            <a className="nav-link" href="https://loayidwan.com/#projects">Projects</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="https://loayidwan.com/pages/contact.html">Contact</a>
+                            <a className="nav-link" href="https://loayidwan.com/#contact">Contact</a>
                         </li>
                     </ul>
                 </div>
