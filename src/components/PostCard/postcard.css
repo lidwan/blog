@@ -1,6 +1,8 @@
 .card{
-    box-shadow: #7f7f7f 5px 5px 10px 2px;
+    box-shadow: #7f7f7f 5px 5px 10px 2px, inset #3c3a3a -5px -4px 15px 3px;
+    transition: all 0.3s;
 }
+
 .card-title {
     padding-bottom: 1vh;
 }
@@ -10,6 +12,7 @@
 
 .cardHover:hover{
     box-shadow: #a4a4a4 10px 10px 15px 2px;
+    transform: translate(-6px,-6px);
 }
 
 .post-card:hover{
