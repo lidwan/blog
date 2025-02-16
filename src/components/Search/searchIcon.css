@@ -12,12 +12,13 @@
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.88);
-    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
     pointer-events: none;
 }
 
 .search-container-overlay.active {
-    visibility: visible;
+    opacity: 100%;
     pointer-events: auto;
     overflow: auto;
 }
