@@ -1,5 +1,14 @@
 const posts = [
     {
+        id: "how-to-access-Wikipedia-and-more-without-internet",
+        title: "How to access Wikipedia and more without internet",
+        description: "A tool that lets you download and access Wikipedia, docs, and other knowledge databases without an internet connection.",
+        file: "/posts/how-to-access-Wikipedia-and-more-without-internet.md",
+        tags: ["open", "source", "wiki", "wikipedia", "download", "offline", "kiwix", "docs"],
+        dateCreated: "February 16, 2025",
+        dateModified: "February 16, 2025"
+    },
+    {
         id: "how-to-install-ventoy-on-a-usb-flash-drive",
         title: "How to install Ventoy on a USB flash drive",
         description: "A step-by-step guide to installing Ventoy on a USB flash drive, enabling easy multi-boot setup for ISO files.",
