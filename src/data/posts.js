@@ -6,7 +6,7 @@ const posts = [
         file: "/posts/how-to-access-Wikipedia-and-more-without-internet.md",
         tags: ["open", "source", "wiki", "wikipedia", "download", "offline", "kiwix", "docs"],
         dateCreated: "February 16, 2025",
-        dateModified: "February 16, 2025"
+        dateModified: "February 19, 2025"
     },
     {
         id: "how-to-install-ventoy-on-a-usb-flash-drive",

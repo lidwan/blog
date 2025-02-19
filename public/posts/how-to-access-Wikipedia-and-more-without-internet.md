@@ -1,4 +1,3 @@
-###### Posted on February 16, 2025 by Loay Idwan.
 # **How to access Wikipedia and more without internet**
 
 ## Have you ever had this thought "How do I download the entirety of Wikipedia offline on my PC"?
@@ -71,20 +70,20 @@ You can check their entire library by [clicking here](https://library.kiwix.org/
     - Here are direct links, [Android](https://play.google.com/store/apps/details?id=org.kiwix.kiwixmobile&pli=1), [iOS/MacOS](https://apps.apple.com/us/app/kiwix/id997079563)
 - Kiwix Server
     
-    They also have Kiwix Server which alows you to serve the things you download to your local network if you want, but this is outside the scope of this tutorial.
+    They also have Kiwix Server which allows you to serve the things you download to your local network if you want, but this is outside the scope of this tutorial.
     
 
 ## Using [Kiwix](https://kiwix.org/en/)
 
 Just click On “All files” in the top left corner of the main screen, and choose what you want to download and click download, it’s that easy!
-
 You might be asked where you want to save the file, choose a suitable place depending on your needs.
 
-ensure the folder you choose has enough free space, especially if you plan on downloading the entire Wikipedia catalog with picture as its size is more than 100 GB.
+ensure the folder you choose has enough free space, especially if you plan on downloading the entire Wikipedia catalog with picture as its size is more than 100 GB. 
 
 You can also change the download directory later if you change your mind be clicking on the tree dots in the top right corner then click “settings” then change the setting called “Download directory”
+## Opening what you downloaded
+Just click on "Local Files" under “All files”, then click on "open".
 
 Now you can enjoy offline access to your favorite Wiki’s and Docs!
 
-###### tags: open, source, wiki, wikipedia, download, offline, kiwix, docs
-###### Last updated on February 16, 2025 by Loay Idwan.
+#
