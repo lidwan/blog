@@ -1,4 +1,3 @@
-###### Posted on December 8, 2024 by Loay Idwan.
 # Must have Open Source software
 
 ### why Open Source?
@@ -176,5 +175,4 @@ HandBrake provides:
 
 Please consider supporting open source software you like and use, also tell your loved ones about them.
 
-###### Tags: open, source, vpn, encryption, 2fa, password, manager, usb, list
-###### Last updated on February 12, 2025 by Loay Idwan.
+#

@@ -1,4 +1,3 @@
-###### Posted on January 23, 2025 by Loay Idwan.
 # **Top .bashrc Aliases to Save Time**
 
 ## Why use bashrc aliases?
@@ -126,5 +125,5 @@ Let’s dive right in!
 ---
 
 #### Now create your own aliases for your most used commands so that can save time!
-###### Tags: bashrc, .bashrc, alias, time, save, top, file, command
-###### Last updated on January 23, 2025 by Loay Idwan.
+
+#
