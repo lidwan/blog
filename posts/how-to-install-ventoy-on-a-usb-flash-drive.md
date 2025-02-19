@@ -1,4 +1,3 @@
-###### Posted on January 28, 2025 by Loay Idwan.
 # **How to install Ventoy on a USB flash drive**
 
 #### Watch this video if you are a visual learner:
@@ -92,5 +91,5 @@ That’s it! You’ll now see and be able to boot from the ISOs you added.
     
 
 For more advanced customizations, you can use the [**VentoyPlugson**](https://www.ventoy.net/en/plugin_plugson.html) tool to further tweak the theme and other settings.
-###### Tags: open, source, drive, ventoy, ISO, Linux, Windows, usb, multiple
-###### Last updated on January 28, 2025 by Loay Idwan.
+
+#
