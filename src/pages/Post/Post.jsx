@@ -7,6 +7,8 @@ import posts from "../../data/posts.js";
 import NavBar from "../../components/NavBar/NavBar.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
 import './post.css'
+import PostedOn from "../../components/PostedOn.jsx";
+import UpdatedOnAndTags from "../../components/UpdatedOnAndTags.jsx";
 
 
 export default function Post() {
@@ -79,7 +81,9 @@ export default function Post() {
         <>
             <NavBar/>
             <div className="centerContainer">
+                <PostedOn date={post.dateCreated}/>
                 <ReactMarkdown rehypePlugins={[rehypeRaw]}>{content}</ReactMarkdown>
+                <UpdatedOnAndTags date={post.dateModified} tags={post.tags.join(", ")} />
             </div>
             <div className="scrollUpButtonContainer">
                 <button type="button" className="btn btn-dark" onClick={scrollToTop}>Scroll back up?</button>
