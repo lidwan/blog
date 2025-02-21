@@ -14,7 +14,7 @@ async function getPostData(postID) {
   if (!post) {
     return null;
   }
-  const filePath = path.join(process.cwd(), post.file);
+  const filePath = path.join(process.cwd(), "public", post.file);
   const content = fs.readFileSync(filePath, 'utf-8');
 
   return { content, post };
