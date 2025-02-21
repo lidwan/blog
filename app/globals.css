@@ -75,6 +75,10 @@ h3 {
   font-size: 2.75vh;
 }
 li, p {
+  font-size: 2.3vh;
+}
+
+p.card-text {
   font-size: 2vh;
 }
 
