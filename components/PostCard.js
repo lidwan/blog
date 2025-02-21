@@ -9,7 +9,7 @@ export default function PostCard({post}){
                     <h5 className="font-bold pb-[1vh] text-xl">
                         {post.title}
                     </h5>
-                    <p className="card-text max-w-[85%] justify-self-center">
+                    <p className="card-text px-[3vw] justify-self-center">
                         {post.description}
                     </p>
                 </div>
