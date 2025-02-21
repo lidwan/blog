@@ -125,3 +125,66 @@ code {
   justify-content: center;
   align-items: center;
 }
+/* -------------- */
+.search-container-overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  gap: 3vh;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.88);
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+  pointer-events: none;
+}
+
+.search-container-overlay.active {
+  opacity: 100%;
+  pointer-events: auto;
+  overflow: auto;
+}
+body.no-scroll {
+  overflow: hidden;
+}
+
+.searchIconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchIcon:hover {
+  cursor: pointer;
+}
+
+.search-container-overlay .centerContainer {
+  height: 70%;
+}
+
+.ifYouWishParagraph{
+  align-self: center;
+  background-color: black;
+  text-align: center;
+  padding: 5px 5px 0;
+  margin-bottom: 0;
+}
+
+.inputField {
+  align-self: center;
+  max-width: 600px;
+  min-width: 200px;
+  width: 100%;
+  padding: 6px;
+  border-radius: 6px;
+}
+
+.overlayExitButton:hover {
+  background-color: #5d5dcc;
+}
