@@ -149,7 +149,7 @@ body.no-scroll {
   overflow: hidden;
 }
 
-.searchIcon:hover {
+.searchIconContainer:hover {
   cursor: pointer;
 }
 
