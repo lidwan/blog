@@ -9,6 +9,7 @@ import PostedOn from '@/components/PostedOn';
 import UpdatedOnAndTags from '@/components/UpdatedOnAndTags';
 import ScrollToTop from '@/components/ScrollToTop';
 import NotFound from '@/components/NotFound';
+import Head from 'next/head';
 
 async function getPostData(postID) {
   const post = posts.find((p) => p.id === postID);
@@ -34,13 +35,24 @@ export default async function Page({params}) {
 
   return (
     <>
+      <Head>
+        <title>{post.title} | Loay's Blog</title>
+        <meta name="description" content={post.description} />
+        <meta name="date" content={post.dateCreated} />
+        <meta name="lastmod" content={post.dateModified} />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.description} />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={`https://blog.loayidwan.com/posts/${post.id}`} />
+        <meta property="og:image" content={"/images/blog.png"} />
+      </Head>
       <NavBar />
       <div className={"w-[99.1vw] flex flex-col justify-center"}>
-        <div className={"w-[75vw] max-w-3xl self-center flex flex-col gap-[3vh] mx-[4vh] break-words max-xl:mx-[3vh] max-sm:mx-[5vh]"}>
+        <article className={"w-[75vw] max-w-3xl self-center flex flex-col gap-[3vh] mx-[4vh] break-words max-xl:mx-[3vh] max-sm:mx-[5vh]"}>
             <PostedOn date={post.dateCreated} />
             <ReactMarkdown rehypePlugins={[rehypeRaw]}>{content}</ReactMarkdown>
             <UpdatedOnAndTags date={post.dateModified} tags={post.tags.join(", ")} />
-        </div>
+        </article>
       </div>
       <ScrollToTop />
       <Footer />
