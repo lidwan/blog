@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+  --color-links:rgb(114, 160, 197);
+  --color-links-darker:rgb(58, 80, 97);
+}
+
+body {
+  color: var(--background);
+  background: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/*resets*/
+
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  margin: 0;
+}
+
+/* reset links */
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+
+/* Styles */
+
+/* links */
+a {
+  text-decoration: none;
+  color: var(--color-links);
+}
+
+a:hover {
+  text-decoration: underline;
+  color: var(--color-links-darker);
+}
+
+/* Post Styles */
+h1 {
+  font-size: 3.5vh;
+  font-weight: 900;
+}
+
+h2 {
+  font-size: 3vh;
+}
+h3 {
+  font-size: 2.75vh;
+}
+li, p {
+  font-size: 2vh;
+}
+
+h6 {
+  font-family: monospace;
+  font-size: 1.5vh;
+}
+
+ul {
+  list-style-type: disc; 
+  padding-left: 20px; 
+  margin: 0; 
+}
+li {
+  margin-bottom: 0.72vh;
+}
+/*center container for videos*/
+.centerVideo {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  padding-top: 56.25%;
+  overflow: hidden;
+}
+
+/* for videos */
+iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+code {
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  font-family: monospace; 
+}
+
+.pageNotFoundContainer{
+  width: 99.1vw;
+  height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+/* -------------- */
+.search-container-overlay {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  gap: 3vh;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.88);
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+  pointer-events: none;
+}
+
+.search-container-overlay.active {
+  opacity: 100%;
+  pointer-events: auto;
+}
+body.no-scroll {
+  overflow: hidden;
+}
+
+.searchIconContainer:hover {
+  cursor: pointer;
+}
+
+.ifYouWishParagraph{
+  align-self: center;
+  background-color: black;
+  text-align: center;
+  padding: 5px 5px 0;
+  margin-bottom: 0;
+}
+
+.inputField {
+  align-self: center;
+  max-width: 600px;
+  min-width: 200px;
+  width: 100%;
+  padding: 6px;
+  border-radius: 6px;
+}
+
+.overlayExitButton:hover {
+  background-color: #5d5dcc;
+}
