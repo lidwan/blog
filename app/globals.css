@@ -61,3 +61,22 @@ a:hover {
   text-decoration: underline;
   color: var(--color-links-darker);
 }
+
+/* Post Styles */
+h1 {
+  font-size: 3.5vh;
+  font-weight: 900;
+}
+
+h2 {
+  font-size: 3vh;
+}
+
+li, p {
+  font-size: 2vh;
+}
+
+h6 {
+  font-family: monospace;
+  font-size: 1.5vh;
+}
