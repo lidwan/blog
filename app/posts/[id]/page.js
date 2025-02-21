@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import NavBar from '@/components/NavBar';
 import PostedOn from '@/components/PostedOn';
 import UpdatedOnAndTags from '@/components/UpdatedOnAndTags';
+import ScrollToTop from '@/components/ScrollToTop';
 
 async function getPostData(postID) {
   const post = posts.find((p) => p.id === postID);
@@ -40,6 +41,7 @@ export default async function Page({params}) {
             <UpdatedOnAndTags date={post.dateModified} tags={post.tags.join(", ")} />
         </div>
       </div>
+      <ScrollToTop />
       <Footer />
     </>
   );

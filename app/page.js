@@ -2,6 +2,7 @@ import posts from '../lib/posts'
 import Footer from '@/components/Footer';
 import NavBar from '@/components/NavBar';
 import PostCard from '@/components/PostCard';
+import ScrollToTop from '@/components/ScrollToTop';
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
             <PostCard post={post} key={post.id} /> 
         ))}
       </div>
+      <ScrollToTop />
       <Footer />
     </main>
   );
