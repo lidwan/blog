@@ -63,28 +63,34 @@ export default function SearchIcon() {
 
     return (
         <>
-            <div className={"search-container-overlay flex justify-center items-center p-[5vh]"}>
-                <div className={"h-[70%] flex flex-col gap-6 justify-center items-center"}>
-                    <p className={"self-center pt-[5vh]"}>
-                        If you wish to exit the search press the Esc key,<br/>
-                        Or click the exit button below.
-                    </p>
-                    <div className={"w-[100%] flex justify-center"}>
-                        <button className={"overlayExitButton p-[8px] rounded-lg bg-[#42428a] hover:bg-[#5353ad] text-lg"}>Exit search</button>
-                    </div>
-                    <input type="text"
-                           placeholder="Please enter your search query"
-                           onInput={handleUserInput}
-                           value={userInput}
-                           className={"inputField text-black"}
-                    />
-                    <div className={"pb-[5vh] flex flex-col gap-[3vh]"}>
-                        {filteredPosts.map((post) => (
-                            <div className={"w-[85%] self-center"} key={post.id}><PostCard post={post} /></div>
-                        ))}
-                    </div>
+<div className={"search-container-overlay p-[5vh]"}>
+    <div className={"mt-[2vh] flex flex-col gap-6 justify-center items-center"}>
+        <p className={"self-center"}>
+            If you wish to exit the search press the Esc key,<br />
+            Or click the exit button below.
+        </p>
+        <div className={"w-[100%] flex justify-center"}>
+            <button className={"overlayExitButton p-[8px] rounded-lg bg-[#42428a] hover:bg-[#5353ad] text-lg"}>
+                Exit search
+            </button>
+        </div>
+        <input
+            type="text"
+            placeholder="Please enter your search query"
+            onInput={handleUserInput}
+            value={userInput}
+            className={"inputField text-black"}
+        />
+        <div className={"pb-[5vh] flex flex-col w-full max-h-[60vh] overflow-y-auto"}>
+            {filteredPosts.map((post) => (
+                <div className={"sm:max-w-[85%] xl:w-[50%]  self-center p-8"} key={post.id}>
+                    <PostCard post={post} />
                 </div>
-            </div>
+            ))}
+        </div>
+    </div>
+</div>
+
             <div className="searchIconContainer">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                      className="searchIcon" viewBox="0 0 16 16" onClick={handleSearchIconClick}>
