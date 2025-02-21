@@ -33,7 +33,7 @@ export default async function Page({params}) {
   return (
     <>
       <NavBar />
-      <div className={"w-[95vw] flex flex-col justify-center"}>
+      <div className={"w-[99.1vw] flex flex-col justify-center"}>
         <div className={"w-[75vw] max-w-3xl self-center flex flex-col gap-[3vh] mx-[4vh] break-words max-xl:mx-[3vh] max-sm:mx-[5vh]"}>
             <PostedOn date={post.dateCreated} />
             <ReactMarkdown rehypePlugins={[rehypeRaw]}>{content}</ReactMarkdown>

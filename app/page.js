@@ -5,7 +5,7 @@ import PostCard from '@/components/PostCard';
 
 export default function Home() {
   return (
-    <main className={"min-h-screen w-screen flex flex-col justify-between"}>
+    <main className={"min-h-screen w-[99.1vw] flex flex-col justify-between"}>
       <NavBar />
       <div className={"w-[75vw] max-w-3xl self-center flex flex-col gap-[3vh] mx-[4vh] break-words max-xl:mx-[3vh] max-sm:mx-[5vh]"}>
         <div className="align-self-center  text-center">
