@@ -1,5 +1,5 @@
 import "./globals.css";
-
+import { Analytics } from "@vercel/analytics/react"
 
 export const metadata = {
   title: "Loay's Blog",
@@ -37,6 +37,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         {children}
+        <Analytics />
       </body>
     </html>
   );
