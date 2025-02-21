@@ -64,6 +64,7 @@ export async function generateMetadata({ params }) {
                 type: 'article', 
                 publishedTime: post.dateCreated,
                 authors: "Loay Idwan",
+                image: post.picutre,
             },
             twitter: {
                 card: 'summary_large_image',
