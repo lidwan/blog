@@ -11,3 +11,5 @@ Adding a new post is a breeze! Simply write a new post in a note-taking app (suc
 #### What's next?
 - Making a logo for the blog
 ###### This was my first-ever experience using React, and it only took me two days to migrate this blog website from Vanilla to React.
+
+###### But then I realized how beneficial server-side rendering would be for SEO, so in just under 11 hours, I migrated the blog to Next.js and moved hosting from GitHub Pages to Vercel.
