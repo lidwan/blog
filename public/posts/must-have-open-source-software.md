@@ -1,22 +1,22 @@
 # Must have Open Source software
 
-### why Open Source?
+## why Open Source?
 
 - Well, because it offers transparency and community-driven innovation.
 - It’s (usually) more secure since its source code is open and available for anyone to see and critique, allowing experts worldwide to inspect, identify, and fix vulnerabilities quickly. Unlike closed-source software, which relies on the vendor's security practices.
 
 ## Table of Contents
 
-1. Ente Auth (2fa Authenticator)
-2. Bitwarden (Password manager)*
-3. Mullvad (VPN)**
-4. Localsend (Secure Cross-platform file sharing)
-5. Zen (Firefox based browser)
-6. VeraCrypt (Encryption software)
-7. Kdenlive (Video editing)
-8. Ventoy (Bootable USB media creation)
-9. OBS (Video recording and live streaming)
-10. HandBrake (Video transcoder)
+1- Ente Auth (2fa Authenticator) <br/>
+2- Bitwarden (Password manager)*  <br/>
+3- Mullvad (VPN)** <br/>
+4- Localsend (Secure Cross-platform file  <br/>sharing)
+5- Zen (Firefox based browser) <br/>
+6- VeraCrypt (Encryption software) <br/>
+7- Kdenlive (Video editing) <br/>
+8- Ventoy (Bootable USB media creation) <br/>
+9- OBS (Video recording and live streaming) <br/>
+10- HandBrake (Video transcoder) <br/>
 
 All are Free, Open source and Cross-platform unless otherwise specified.
 
