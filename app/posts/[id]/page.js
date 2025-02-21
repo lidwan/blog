@@ -9,7 +9,6 @@ import PostedOn from '@/components/PostedOn';
 import UpdatedOnAndTags from '@/components/UpdatedOnAndTags';
 import ScrollToTop from '@/components/ScrollToTop';
 import NotFound from '@/components/NotFound';
-import Link from 'next/link';
 
 async function getPostData(postID) {
   const post = posts.find((p) => p.id === postID);
