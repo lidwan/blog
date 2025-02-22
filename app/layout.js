@@ -26,18 +26,18 @@ export const metadata = {
   openGraph: {
     title: "Loay's Blog",
     description: "Loay Idwan's Blog, Sharing thoughts on tech, coding, and open source.",
-    url: "https://blog-next-git-fixing-soical-seo-loay-idwans-projects.vercel.app",
+    url: "https://blog.loayidwan.com",
     type: "website",
     images: [
       {
-        url: 'https://blog-next-git-fixing-soical-seo-loay-idwans-projects.vercel.app/opengraph-image.png',
+        url: 'https://blog.loayidwan.com/opengraph-image.png',
         width: 1200,
         height: 630,
         alt: "Website for Loay Idwan's Blog, Sharing thoughts on tech, coding, and open source."
       }
     ]
   },
-  canonical: "https://blog-next-git-fixing-soical-seo-loay-idwans-projects.vercel.app",
+  canonical: "https://blog.loayidwan.com",
 };
 
 export default function RootLayout({ children }) {
