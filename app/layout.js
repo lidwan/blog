@@ -23,12 +23,20 @@ export const metadata = {
       'max-snippet': -1,
     },
   },
-  og: {
+  openGraph: {
     title: "Loay's Blog",
+    siteName: "Loay's Blog",
     description: "Loay Idwan's Blog, Sharing thoughts on tech, coding, and open source.",
-    image: "https://blog.loayidwan.com/images/blog.png",
     url: "https://blog.loayidwan.com",
     type: "website",
+    images: [
+      {
+        url: 'https://blog.loayidwan.com/opengraph-image.png',
+        width: 1200,
+        height: 630,
+        alt: "Website for Loay Idwan's Blog, Sharing thoughts on tech, coding, and open source."
+      }
+    ]
   },
   canonical: "https://blog.loayidwan.com",
 };

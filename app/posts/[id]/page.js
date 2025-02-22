@@ -56,25 +56,35 @@ export async function generateMetadata({ params }) {
         const { post } = postData;
     
         return { 
+            metadataBase: new URL('https://blog.loayidwan.com'),
             title: post.title + " | Loay's Blog", 
             description: post.description, 
             openGraph: { 
-                title: post.title, 
+                title: post.title,
+                siteName: "Loay's Blog",
                 description: post.description, 
                 type: 'article', 
                 publishedTime: post.dateCreated,
                 authors: "Loay Idwan",
-                image: post.picutre,
+                url: `/posts/${post.id}`,
+                images: [
+                    {
+                      url: post.picutre,
+                      width: 1200,
+                      height: 630,
+                      alt: "Picture of blog post about" + post.description,
+                    }
+                ],
             },
             twitter: {
                 card: 'summary_large_image',
                 title: post.title,
                 description: post.description,
+                siteName: "Loay's Blog",
+                url: `/posts/${post.id}`,
             },
             keywords: post.tags,
-            alternates: {
-                canonical: `/posts/${post.id}`
-            } 
+            canonical: `/posts/${post.id}`
         }
     }
 }
