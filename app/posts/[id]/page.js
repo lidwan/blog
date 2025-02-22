@@ -59,7 +59,8 @@ export async function generateMetadata({ params }) {
             title: post.title + " | Loay's Blog", 
             description: post.description, 
             openGraph: { 
-                title: post.title, 
+                title: post.title,
+                siteName: "Loay's Blog",
                 description: post.description, 
                 type: 'article', 
                 publishedTime: post.dateCreated,
@@ -77,11 +78,11 @@ export async function generateMetadata({ params }) {
                 card: 'summary_large_image',
                 title: post.title,
                 description: post.description,
+                siteName: "Loay's Blog",
+                canonical: `/posts/${post.id}`,
             },
             keywords: post.tags,
-            alternates: {
-                canonical: `/posts/${post.id}`
-            } 
+            canonical: `/posts/${post.id}`
         }
     }
 }
