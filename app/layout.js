@@ -23,13 +23,21 @@ export const metadata = {
       'max-snippet': -1,
     },
   },
-  og: {
+  openGraph: {
     title: "Loay's Blog",
     description: "Loay Idwan's Blog, Sharing thoughts on tech, coding, and open source.",
-    url: "https://blog.loayidwan.com",
+    url: "https://blog-next-git-fixing-soical-seo-loay-idwans-projects.vercel.app",
     type: "website",
+    images: [
+      {
+        url: 'https://blog-next-git-fixing-soical-seo-loay-idwans-projects.vercel.app/opengraph-image.png',
+        width: 1200,
+        height: 630,
+        alt: "Website for Loay Idwan's Blog, Sharing thoughts on tech, coding, and open source."
+      }
+    ]
   },
-  canonical: "https://blog.loayidwan.com",
+  canonical: "https://blog-next-git-fixing-soical-seo-loay-idwans-projects.vercel.app",
 };
 
 export default function RootLayout({ children }) {
