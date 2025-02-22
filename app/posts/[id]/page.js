@@ -65,6 +65,7 @@ export async function generateMetadata({ params }) {
                 type: 'article', 
                 publishedTime: post.dateCreated,
                 authors: "Loay Idwan",
+                url: `/posts/${post.id}`,
                 images: [
                     {
                       url: post.picutre,
@@ -72,14 +73,14 @@ export async function generateMetadata({ params }) {
                       height: 630,
                       alt: "Picture of blog post about" + post.description,
                     }
-                  ],
+                ],
             },
             twitter: {
                 card: 'summary_large_image',
                 title: post.title,
                 description: post.description,
                 siteName: "Loay's Blog",
-                canonical: `/posts/${post.id}`,
+                url: `/posts/${post.id}`,
             },
             keywords: post.tags,
             canonical: `/posts/${post.id}`
