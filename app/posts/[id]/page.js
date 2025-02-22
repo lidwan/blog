@@ -56,6 +56,7 @@ export async function generateMetadata({ params }) {
         const { post } = postData;
     
         return { 
+            metadataBase: new URL('https://blog.loayidwan.com'),
             title: post.title + " | Loay's Blog", 
             description: post.description, 
             openGraph: { 
