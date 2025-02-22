@@ -25,6 +25,7 @@ export const metadata = {
   },
   openGraph: {
     title: "Loay's Blog",
+    siteName: "Loay's Blog",
     description: "Loay Idwan's Blog, Sharing thoughts on tech, coding, and open source.",
     url: "https://blog.loayidwan.com",
     type: "website",
