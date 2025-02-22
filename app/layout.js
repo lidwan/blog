@@ -26,7 +26,6 @@ export const metadata = {
   og: {
     title: "Loay's Blog",
     description: "Loay Idwan's Blog, Sharing thoughts on tech, coding, and open source.",
-    image: "https://blog.loayidwan.com/images/blog.png",
     url: "https://blog.loayidwan.com",
     type: "website",
   },
