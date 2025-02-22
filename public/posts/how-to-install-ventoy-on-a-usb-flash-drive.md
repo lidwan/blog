@@ -41,7 +41,7 @@ The process for installing Ventoy differs depending on your operating system (Wi
 
 ## How to use Ventoy?
 
-#### Installing Ventoy on a USB Drive
+### Installing Ventoy on a USB Drive
 
 Plug in the USB drive you want to use with Ventoy. If the drive doesn’t appear, click the green refresh button to detect it.
 
@@ -49,11 +49,11 @@ Plug in the USB drive you want to use with Ventoy. If the drive doesn’t appear
 
 Double-check that you have selected the correct drive. Once confirmed, click "Install" and proceed to confirm your choice.
 
-#### Adding ISOs to the Ventoy Drive
+### Adding ISOs to the Ventoy Drive
 
 Simply open the Ventoy drive and copy the desired ISO files directly onto it. There’s no need for additional formatting or setup—just drag and drop!
 
-#### Accessing the Ventoy Drive
+### Accessing the Ventoy Drive
 
 1. Turn off your machine and plug in the Ventoy USB drive.
 2. Use the boot menu key (varies by device—search for the correct key for your PC or laptop) to access the boot menu.
