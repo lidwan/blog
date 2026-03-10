@@ -1,6 +1,6 @@
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/react"
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata = {
   metadataBase: new URL("https://blog.loayidwan.com"),
@@ -8,9 +8,9 @@ export const metadata = {
   description: "Loay Idwan's Blog, Sharing thoughts on tech, coding, and open source.",
   keywords: "Loay Idwan, blog, technology, coding, open source, programming, web development",
   author: "Loay Idwan",
-  creator: 'Loay Idwan',
-  publisher: 'Loay Idwan',
-  category: 'technology',
+  creator: "Loay Idwan",
+  publisher: "Loay Idwan",
+  category: "technology",
   robots: {
     index: true,
     follow: true,
@@ -19,9 +19,9 @@ export const metadata = {
       index: true,
       follow: true,
       noimageindex: false,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   openGraph: {
@@ -32,12 +32,12 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: 'https://blog.loayidwan.com/opengraph-image.png',
+        url: "https://blog.loayidwan.com/opengraph-image.png",
         width: 1200,
         height: 630,
-        alt: "Website for Loay Idwan's Blog, Sharing thoughts on tech, coding, and open source."
-      }
-    ]
+        alt: "Website for Loay Idwan's Blog, Sharing thoughts on tech, coding, and open source.",
+      },
+    ],
   },
   alternates: {
     canonical: "/",

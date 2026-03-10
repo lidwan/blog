@@ -1,19 +1,22 @@
-import NavBar from "./NavBar.js";
-import Footer from "./Footer.js";
-import Link from "next/link.js";
-
+import Link from "next/link";
+import Footer from "./Footer";
+import NavBar from "./NavBar";
 
 export default function NotFound() {
-    return (
-        <>
-            <header><title>404 Page Not Found! | Loay&#39;s blog</title></header>
-            <NavBar />
-            <div className="pageNotFoundContainer">
-                <h1>404, Post Not Found!</h1>
-                <h2><Link href="/">Go Back Home</Link></h2>
-            </div>
-            <Footer />
-        </>
-
-    )
+  return (
+    <>
+      <NavBar />
+      <main className="page-shell">
+        <section className="not-found-panel glass-panel">
+          <p className="section-kicker">404</p>
+          <h1>Post not found</h1>
+          <p>The article you requested does not exist in this archive.</p>
+          <Link href="/" className="inline-pill-link">
+            Return home
+          </Link>
+        </section>
+      </main>
+      <Footer />
+    </>
+  );
 }

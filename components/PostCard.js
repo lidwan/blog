@@ -1,31 +1,44 @@
+import Image from "next/image";
 import Link from "next/link";
+import styles from "./PostCard.module.css";
 
+export default function PostCard({ post, compact = false }) {
+  const visibleTags = compact ? post.tags.slice(0, 2) : post.tags.slice(0, 3);
 
-export default function PostCard({post}){
-    return (
-        <Link href={"/posts/"+[post.id]} className={"hover:no-underline text-white hover:text-white"}>
-            <div className="card flex flex-col justify-between gap-[1vh] px-[2vh] py-[3vh] text-center bg-[#212529] rounded-lg shadow-[5px_5px_10px_2px_#7f7f7f,inset_-5px_-4px_15px_3px_#3c3a3a] transition-all duration-300 hover:shadow-[10px_10px_15px_2px_#a4a4a4] hover:-translate-x-1.5 hover:-translate-y-1.5 " >
-                <div className="card-body">
-                    <h5 className="font-bold pb-[1vh] text-xl">
-                        {post.title}
-                    </h5>
-                    <p className="card-text px-[3vw] justify-self-center">
-                        {post.description}
-                    </p>
-                </div>
-                <div className="opacity-50 font-mono text-sm">
-                    Posted on {post.dateCreated}
-                </div>
-            </div>
-        </Link>
-    )
+  return (
+    <Link href={`/posts/${post.id}`} className="card-link">
+      <article className={styles.card}>
+        {post.image ? (
+          <div className={styles.coverWrap}>
+            <Image
+              src={post.image}
+              alt={post.title}
+              fill
+              sizes={compact ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 100vw, 33vw"}
+              className={styles.cover}
+            />
+          </div>
+        ) : null}
+
+        <div className={styles.body}>
+          <span className={styles.eyebrow}>{post.featured ? "Featured essay" : "Latest post"}</span>
+          <h3 className={styles.title}>{post.title}</h3>
+          <p className={styles.description}>{post.description}</p>
+
+          <div className={styles.meta} aria-label="Post metadata">
+            <span className={styles.metaItem}>{post.dateCreated}</span>
+            <span className={styles.metaItem}>{post.readingTime}</span>
+          </div>
+
+          <div className={styles.tags} aria-label="Tags">
+            {visibleTags.map((tag) => (
+              <span key={tag} className={styles.tag}>
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      </article>
+    </Link>
+  );
 }
-
-PostCard.propTypes = {
-    post: ({
-        id: String,
-        title: String,
-        description: String,
-        date: String,
-    })
-};

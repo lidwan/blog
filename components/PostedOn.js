@@ -1,10 +1,17 @@
-const PostedOn = ({date}) => {
-    return (
-        <h6>
-            Posted on {date} by Loay Idwan.
-        </h6>
-    )
-}
+const PostedOn = ({ date, readingTime }) => {
+  return (
+    <div className="article-meta-block">
+      <span>{date}</span>
+      <span className="article-meta-separator" aria-hidden="true">
+        /
+      </span>
+      <span>{readingTime}</span>
+      <span className="article-meta-separator" aria-hidden="true">
+        /
+      </span>
+      <span>By Loay Idwan</span>
+    </div>
+  );
+};
 
-export default PostedOn
-
+export default PostedOn;

@@ -1,9 +1,16 @@
-function Footer() {
-    const currentYear = new Date().getFullYear();
+import styles from "./Footer.module.css";
 
-    return (
-        <p className="flex justify-center items-center text-white mt-[3vh] p-4 max-lg:p-[3vw] max-sm:p-[5vw]">&copy; {currentYear} Loay&#39;s Blog</p>
-    )
+function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <footer className={styles.footer}>
+      <div className={styles.inner}>
+        <p className={styles.note}>© {currentYear} Loay&apos;s Blog</p>
+        <span className={styles.status}>Minimal writing on code, systems, and tools</span>
+      </div>
+    </footer>
+  );
 }
 
 export default Footer;

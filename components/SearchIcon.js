@@ -1,108 +1,105 @@
-"use client"
+"use client";
 
-import {useEffect, useState} from "react";
+import { useEffect, useMemo, useState } from "react";
 import posts from "@/lib/posts";
 import PostCard from "./PostCard";
-import { usePathname } from 'next/navigation'
+import styles from "./SearchIcon.module.css";
 
-
-// this is probably overengineered but hey, it works.
 export default function SearchIcon() {
-    const [userInput, setUserInput] = useState("");
-    const [filteredPosts, setFilteredPosts] = useState([]);      
-    const pathname = usePathname()
+  const [isOpen, setIsOpen] = useState(false);
+  const [query, setQuery] = useState("");
 
-    useEffect(() => {
-        function handleUrlChange() {
-            hideOverLayAndRest();
-        }
-        handleUrlChange()
-    }, [pathname])
-    
-    useEffect(() => {
-        const searchIconContainer = document.querySelector(".searchIconContainer");
-        searchIconContainer.addEventListener("click", handleSearchIconClick);
-
-        return () => {
-            searchIconContainer.removeEventListener("click", handleSearchIconClick);
-        };
-    }, []);
-
-    const handleSearchIconClick = () => {
-        document.querySelector('.search-container-overlay').classList.add('active');
-        window.addEventListener("keydown", handleKeyDown);
-        document.querySelector(".overlayExitButton").addEventListener(
-            "click",
-            hideOverLayAndRest
-        );
-        document.body.classList.add("no-scroll");
-        document.querySelector(".inputField").focus();
+  useEffect(() => {
+    if (!isOpen) {
+      return undefined;
     }
 
-    const handleUserInput = (e) => {
-        const tmpUserInput = e.target.value.toLowerCase();
-        setUserInput(tmpUserInput);
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+      }
+    };
 
-        setFilteredPosts(posts.filter((post) => {
-            return post.title.toLowerCase().includes(tmpUserInput) || post.description.toLowerCase().includes(tmpUserInput)
-        }))
+    document.body.classList.add("no-scroll");
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.classList.remove("no-scroll");
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen]);
+
+  const filteredPosts = useMemo(() => {
+    if (!query.trim()) {
+      return [];
     }
 
-    const handleKeyDown = (e) => {
-        if (e.key === 'Escape') {
-            hideOverLayAndRest();
-        }
-    }
+    const normalizedQuery = query.toLowerCase();
 
-    const hideOverLayAndRest = () => {
-        document.querySelector('.search-container-overlay').classList.remove('active');
-        window.removeEventListener("keydown", handleKeyDown);
-        document.querySelector(".overlayExitButton").removeEventListener(
-            "click",
-            hideOverLayAndRest
-        )
-        document.body.classList.remove("no-scroll")
-        setUserInput("");
-        setFilteredPosts([]);
-    }
+    return posts.filter((post) => {
+      const haystack = [post.title, post.description, ...(post.tags ?? [])]
+        .join(" ")
+        .toLowerCase();
 
-    return (
-        <>
-<div className={"search-container-overlay p-[5vh]"}>
-    <div className={"mt-[2vh] flex flex-col gap-6 justify-center items-center"}>
-        <p className={"self-center"}>
-            If you wish to exit the search press the Esc key,<br />
-            Or click the exit button below.
-        </p>
-        <div className={"w-[100%] flex justify-center"}>
-            <button className={"overlayExitButton p-[8px] rounded-lg bg-[#42428a] hover:bg-[#5353ad] text-lg"}>
-                Exit search
-            </button>
-        </div>
-        <input
-            type="text"
-            placeholder="Please enter your search query"
-            onInput={handleUserInput}
-            value={userInput}
-            className={"inputField text-black"}
-        />
-        <div className={"pb-[5vh] flex flex-col w-full max-h-[60vh] overflow-y-auto"}>
-            {filteredPosts.map((post) => (
-                <div className={"sm:max-w-[85%] xl:w-[50%]  self-center p-8"} key={post.id}>
-                    <PostCard post={post} />
-                </div>
-            ))}
-        </div>
-    </div>
-</div>
+      return haystack.includes(normalizedQuery);
+    });
+  }, [query]);
 
-            <div className="searchIconContainer p-2" onClick={handleSearchIconClick}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
-                     className="searchIcon" viewBox="0 0 16 16">
-                    <path
-                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-                </svg>
+  return (
+    <div className={styles.root}>
+      <button
+        type="button"
+        className={styles.trigger}
+        onClick={() => setIsOpen(true)}
+        aria-haspopup="dialog"
+        aria-expanded={isOpen}
+        aria-label="Search posts"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+        </svg>
+      </button>
+
+      {isOpen ? (
+        <div className={styles.overlay} role="dialog" aria-modal="true" aria-label="Search posts">
+          <div className={styles.panel}>
+            <div className={styles.panelHeader}>
+              <div>
+                <h2 className={styles.panelTitle}>Search the archive</h2>
+                <p className={styles.panelIntro}>
+                  Titles, excerpts, and tags are all searchable. Press <kbd>Esc</kbd> to close.
+                </p>
+              </div>
+              <button type="button" className={styles.close} onClick={() => setIsOpen(false)}>
+                Close
+              </button>
             </div>
-        </>
-    )
+
+            <label className="sr-only" htmlFor="post-search">
+              Search posts
+            </label>
+            <input
+              id="post-search"
+              type="text"
+              className={styles.input}
+              placeholder="Search posts, topics, or tools"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              autoFocus
+            />
+
+            <div className={styles.results}>
+              {filteredPosts.map((post) => (
+                <PostCard key={post.id} post={post} compact />
+              ))}
+            </div>
+
+            {query && filteredPosts.length === 0 ? (
+              <p className={styles.empty}>No posts matched your search.</p>
+            ) : null}
+          </div>
+        </div>
+      ) : null}
+    </div>
+  );
 }
