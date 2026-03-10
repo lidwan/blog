@@ -25,10 +25,7 @@ function NavBar() {
           <span className={styles.brandMark} aria-hidden="true">
             L
           </span>
-          <span className={styles.brandText}>
-            <span className={styles.brandTitle}>Loay&apos;s Blog</span>
-            <span className={styles.brandSubtitle}>Notes on code and systems</span>
-          </span>
+          <span className={styles.brandTitle}>Loay&apos;s Blog</span>
         </Link>
 
         <div className={styles.links}>
