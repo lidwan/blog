@@ -7,7 +7,7 @@ export default function PostCard({ post, compact = false }) {
 
   return (
     <Link href={`/posts/${post.id}`} className="card-link">
-      <article className={styles.card}>
+      <article className={styles.card} data-compact={compact ? "true" : "false"}>
         {post.image ? (
           <div className={styles.coverWrap}>
             <Image

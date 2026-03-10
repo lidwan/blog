@@ -35,6 +35,11 @@
     0 0 0 1px rgba(133, 162, 255, 0.05);
 }
 
+.card[data-compact="true"] {
+  grid-template-columns: minmax(10rem, 13rem) minmax(0, 1fr);
+  align-items: center;
+}
+
 .coverWrap {
   position: relative;
   aspect-ratio: 16 / 10;
@@ -54,6 +59,25 @@
 .card:hover .cover,
 .card:focus-within .cover {
   transform: scale(1.035);
+}
+
+.card[data-compact="true"] .coverWrap {
+  aspect-ratio: 1 / 1;
+}
+
+.card[data-compact="true"] .body {
+  gap: 0.65rem;
+}
+
+.card[data-compact="true"] .title {
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+}
+
+.card[data-compact="true"] .description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .body {
@@ -113,4 +137,14 @@
   background: rgba(255, 255, 255, 0.04);
   color: #d9deea;
   font-size: 0.78rem;
+}
+
+@media (max-width: 720px) {
+  .card[data-compact="true"] {
+    grid-template-columns: 1fr;
+  }
+
+  .card[data-compact="true"] .coverWrap {
+    aspect-ratio: 16 / 10;
+  }
 }
