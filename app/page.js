@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
@@ -20,41 +19,29 @@ export default function Home() {
             <div className={styles.sectionHeader}>
               <div>
                 <p className="section-kicker">Featured</p>
-                <h2 className={styles.sectionTitle}>Lead story</h2>
               </div>
             </div>
 
-            <article className={`glass-panel ${styles.featured}`}>
-              <div className={styles.featuredContent}>
-                <h3 className={styles.featuredTitle}>{featuredPost.title}</h3>
-                <p className={styles.featuredDescription}>{featuredPost.description}</p>
-                <div className={styles.featuredMeta}>
-                  <span>{featuredPost.dateCreated}</span>
-                  <span>{featuredPost.readingTime}</span>
+            <Link href={`/posts/${featuredPost.id}`} className={`card-link ${styles.featuredLink}`}>
+              <article className={`glass-panel ${styles.featured}`}>
+                <div className={styles.featuredContent}>
+                  <p className={styles.featuredEyebrow}>Editor&apos;s pick</p>
+                  <h3 className={styles.featuredTitle}>{featuredPost.title}</h3>
+                  <p className={styles.featuredDescription}>{featuredPost.description}</p>
+                  <div className={styles.featuredMeta}>
+                    <span>{featuredPost.dateCreated}</span>
+                    <span>{featuredPost.readingTime}</span>
+                  </div>
+                  <div className={styles.featuredTags}>
+                    {featuredPost.tags.map((tag) => (
+                      <span key={tag} className="tag-pill">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <div className={styles.featuredTags}>
-                  {featuredPost.tags.map((tag) => (
-                    <span key={tag} className="tag-pill">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <Link href={`/posts/${featuredPost.id}`} className="inline-pill-link">
-                  Open article
-                </Link>
-              </div>
-
-              <div className={styles.featuredImageWrap}>
-                <Image
-                  src={featuredPost.image}
-                  alt={featuredPost.title}
-                  fill
-                  priority
-                  sizes="(max-width: 920px) 100vw, 40vw"
-                  className={styles.featuredImage}
-                />
-              </div>
-            </article>
+              </article>
+            </Link>
           </section>
 
           <section id="latest" className={styles.section}>

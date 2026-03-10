@@ -67,7 +67,7 @@ export default function SearchIcon() {
               <div>
                 <h2 className={styles.panelTitle}>Search the archive</h2>
                 <p className={styles.panelIntro}>
-                  Titles, excerpts, and tags are all searchable. Press <kbd>Esc</kbd> to close.
+                  Titles and tags are searchable. Press <kbd>Esc</kbd> to close.
                 </p>
               </div>
               <button type="button" className={styles.close} onClick={() => setIsOpen(false)}>
@@ -90,7 +90,7 @@ export default function SearchIcon() {
 
             <div className={styles.results}>
               {filteredPosts.map((post) => (
-                <PostCard key={post.id} post={post} compact />
+                <PostCard key={post.id} post={post} compact variant="search" />
               ))}
             </div>
 

@@ -22,7 +22,11 @@
 }
 
 .heroTitle {
-  font-size: clamp(2.35rem, 6vw, 4.4rem);
+  --hero-title-min: 1.52rem;
+  --hero-title-max: 2.45rem;
+  font-size: clamp(var(--hero-title-min), calc(1.04rem + 2.1vw), var(--hero-title-max));
+  line-height: 0.98;
+  text-size-adjust: 100%;
 }
 
 .heroDescription {

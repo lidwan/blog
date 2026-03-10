@@ -85,12 +85,6 @@ export default async function Page({ params }) {
                 ))}
               </div>
             </div>
-
-            {post.image ? (
-              <div className={styles.heroImageWrap}>
-                <Image src={post.image} alt={post.title} fill priority sizes="100vw" className={styles.heroImage} />
-              </div>
-            ) : null}
           </section>
 
           <div className={styles.contentGrid}>

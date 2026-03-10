@@ -22,9 +22,6 @@ function NavBar() {
     <div className={styles.navWrap}>
       <nav className={styles.nav} aria-label="Primary">
         <Link href="/" className={styles.brand}>
-          <span className={styles.brandMark} aria-hidden="true">
-            L
-          </span>
           <span className={styles.brandTitle}>Loay&apos;s Blog</span>
         </Link>
 
