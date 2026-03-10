@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata = {
+  metadataBase: new URL("https://blog.loayidwan.com"),
   title: "Loay's Blog",
   description: "Loay Idwan's Blog, Sharing thoughts on tech, coding, and open source.",
   keywords: "Loay Idwan, blog, technology, coding, open source, programming, web development",
@@ -38,7 +39,9 @@ export const metadata = {
       }
     ]
   },
-  canonical: "https://blog.loayidwan.com",
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function RootLayout({ children }) {
