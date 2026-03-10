@@ -59,12 +59,16 @@ export async function generateMetadata({ params }) {
             metadataBase: new URL('https://blog.loayidwan.com'),
             title: post.title + " | Loay's Blog", 
             description: post.description, 
+            alternates: {
+                canonical: `/posts/${post.id}`,
+            },
             openGraph: { 
                 title: post.title,
                 siteName: "Loay's Blog",
                 description: post.description, 
                 type: 'article', 
                 publishedTime: post.dateCreated,
+                modifiedTime: post.dateModified,
                 authors: "Loay Idwan",
                 url: `/posts/${post.id}`,
                 images: [
@@ -82,9 +86,9 @@ export async function generateMetadata({ params }) {
                 description: post.description,
                 siteName: "Loay's Blog",
                 url: `/posts/${post.id}`,
+                images: [post.picutre],
             },
             keywords: post.tags,
-            canonical: `/posts/${post.id}`
         }
     }
 }
@@ -92,6 +96,6 @@ export async function generateMetadata({ params }) {
 
 export async function generateStaticParams() {
     return posts.map((post) => ({
-        postID: post.id,
+        id: post.id,
     }));
 }
