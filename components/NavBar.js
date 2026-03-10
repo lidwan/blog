@@ -9,6 +9,7 @@ const links = [
   { href: "/", label: "Home" },
   { href: "/#featured", label: "Featured" },
   { href: "/#latest", label: "Latest" },
+  { href: "https://loayidwan.com", label: "Portfolio", external: true },
 ];
 
 function isActive(pathname, href) {
@@ -27,13 +28,25 @@ function NavBar() {
 
         <div className={styles.links}>
           {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`${styles.link} ${isActive(pathname, link.href) ? styles.linkActive : ""}`}
-            >
-              {link.label}
-            </Link>
+            link.external ? (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                className={styles.link}
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`${styles.link} ${isActive(pathname, link.href) ? styles.linkActive : ""}`}
+              >
+                {link.label}
+              </Link>
+            )
           ))}
         </div>
 
