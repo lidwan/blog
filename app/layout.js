@@ -1,4 +1,5 @@
 import "./globals.css";
+import Script from "next/script";
 
 export const metadata = {
   metadataBase: new URL("https://blog.loayidwan.com"),
@@ -47,6 +48,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         {children}
+        <Script
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "8020fd82c2784a44a6eba9dbe3b513f2"}'
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
