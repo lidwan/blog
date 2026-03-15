@@ -1,95 +1,84 @@
-# **How to install Ventoy on a USB flash drive**
+# How to Install Ventoy on a USB Flash Drive
 
-#### Watch this video if you are a visual learner:
+If you've ever needed to boot from a USB drive whether to install an OS, run a live Linux environment, or just have something useful in your back pocket you've probably dealt with the tedious dance of formatting and re-flashing the drive every single time.
 
-<div class="centerVideo">
-  <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/UKE5NmUmxRY?si=Joah5Kwum6jY8xSc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-
-Click on this link if the embedded video doesn't load for some reason.
-[https://youtu.be/cmSJpkOhAZs](https://youtu.be/cmSJpkOhAZs)
+Ventoy solves that in a way that feels almost too simple.
 
 ## What is Ventoy?
 
-Ventoy is a tool for creating bootable USB drives that can hold multiple ISO files simultaneously. With Ventoy, you can simply copy ISO files onto the USB drive without the need to reformat or burn them each time.
+Ventoy is a tool that turns a USB drive into a multi-boot drive that can hold as many ISO files as the drive's storage allows. You don't need to reformat or burn anything each time you just copy ISO files onto the drive like it's a regular folder.
 
-This means you can have a single USB drive containing Windows 11, Windows 10, and various Linux ISOs, while also being able to easily update or replace the ISOs as needed.
+That means one USB can have Windows 11, Windows 10, a couple of Linux distros, and a recovery tool, all at the same time. Need to swap something out? Delete the old ISO and drop a new one in. No formatting required.
 
 ---
 
-## How to install it?
+## How to install it
 
-The process for installing Ventoy differs depending on your operating system (Windows or Linux):
+The install process is slightly different depending on your OS:
 
 1. **Linux**
-    
-    Use your preferred package manager to install Ventoy. For example, on Arch Linux, simply run:
-    
+
+    Install it with your package manager. On Arch Linux:
+
     ```bash
     yay -S ventoy-bin
     ```
-    
+
 2. **Windows**
     - Visit the [Ventoy website](https://www.ventoy.net/).
     - Navigate to the [Download section](https://www.ventoy.net/en/download.html).
-    - Click on this link: [SourceForge Ventoy files](https://sourceforge.net/projects/ventoy/files).
-    - Download the latest version (e.g., *ventoy-1.1.00-windows.zip* as of this writing).
-    - Extract the downloaded ZIP file.
-    - In the extracted folder, locate the file named **Ventoy2Disk**, open it, and click "Yes" when prompted.
+    - Grab the latest version from [SourceForge](https://sourceforge.net/projects/ventoy/files) (something like *ventoy-1.1.00-windows.zip*).
+    - Extract the ZIP file.
+    - Find **Ventoy2Disk** in the extracted folder, open it, and click "Yes" when prompted.
 
 ---
 
-## How to use Ventoy?
+## How to use Ventoy
 
-### Installing Ventoy on a USB Drive
+### Getting it onto your USB drive
 
-Plug in the USB drive you want to use with Ventoy. If the drive doesn’t appear, click the green refresh button to detect it.
+Plug in the USB drive you want to use. If it doesn't show up, hit the green refresh button.
 
-**Important:** The selected drive will be completely wiped!
+**Important:** This will completely wipe the selected drive. Double-check you've got the right one before clicking anything.
 
-Double-check that you have selected the correct drive. Once confirmed, click "Install" and proceed to confirm your choice.
+Once you're sure, click "Install" and confirm your choice.
 
-### Adding ISOs to the Ventoy Drive
+### Adding ISOs
 
-Simply open the Ventoy drive and copy the desired ISO files directly onto it. There’s no need for additional formatting or setup—just drag and drop!
+Open the Ventoy drive like any normal drive and drag your ISO files onto it. No configuration needed just drop them in.
 
-### Accessing the Ventoy Drive
+### Booting from it
 
-1. Turn off your machine and plug in the Ventoy USB drive.
-2. Use the boot menu key (varies by device—search for the correct key for your PC or laptop) to access the boot menu.
-3. Select the USB drive where Ventoy is installed.
+1. Shut down your machine and plug in the Ventoy USB drive.
+2. Boot into your boot menu (the key varies by device look it up for your specific machine).
+3. Select the Ventoy USB drive.
 
-That’s it! You’ll now see and be able to boot from the ISOs you added.
+You'll see a list of all the ISOs you added and can boot into whichever one you need.
 
 ---
 
-## Customizing Ventoy’s Theme
+## Customizing the theme
 
-1. **Download a Theme**
-    
-    Visit [Gnome-Look.org](https://www.gnome-look.org/browse?cat=109&ord=rating) to find and download a theme you like.
-    
-2. **Set Up the Theme**
-    - Create a folder named `Ventoy` inside your Ventoy drive.
-    - Extract the downloaded theme into the `Ventoy` folder.
-3. **Create the Configuration File**
-    - Inside the `Ventoy` folder, create a file named `ventoy.json`.
-    - Use the following template for the JSON file:
-        
-        ```bash
-        {
-          "theme": {
-            "file": "HereTypeInThePathToTheme.txt"
-          }
-        }
-        ```
-        
-    - Locate the `theme.txt` file in the extracted theme folder. Replace `"HereTypeInThePathToTheme.txt"` with the relative path from the `Ventoy` folder to the `theme.txt` file.
-4. **Apply the Theme**
-    
-    The next time you boot from the Ventoy drive, the theme will be applied.
-    
+If you want Ventoy to look less like a bare-bones boot menu:
 
-For more advanced customizations, you can use the [**VentoyPlugson**](https://www.ventoy.net/en/plugin_plugson.html) tool to further tweak the theme and other settings.
+1. **Find a theme** at [Gnome-Look.org](https://www.gnome-look.org/browse?cat=109&ord=rating)
+2. **Set it up:**
+    - Create a folder called `Ventoy` on your Ventoy drive.
+    - Extract the downloaded theme into that folder.
+3. **Create a config file:** Inside the `Ventoy` folder, create a file called `ventoy.json` with this content:
+
+    ```bash
+    {
+      "theme": {
+        "file": "HereTypeInThePathToTheme.txt"
+      }
+    }
+    ```
+
+    Replace `"HereTypeInThePathToTheme.txt"` with the relative path from the `Ventoy` folder to the `theme.txt` file inside the theme you downloaded.
+
+4. **Boot from it** the theme will apply automatically next time.
+
+For more advanced customizations, check out the [VentoyPlugson](https://www.ventoy.net/en/plugin_plugson.html) tool.
 
 #

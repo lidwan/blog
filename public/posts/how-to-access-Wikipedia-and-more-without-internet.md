@@ -1,89 +1,55 @@
-# **How to access Wikipedia and more without internet**
+# How to Access Wikipedia (and More) Without Internet
 
-## Have you ever had this thought "How do I download the entirety of Wikipedia offline on my PC"?
+Let me guess you've never once thought about downloading the entirety of Wikipedia offline onto your PC.
 
-Probably not, but you're here, aren't you? That means you're interested, so let's learn how to!
+Completely understandable. And yet, here you are. Which means part of you is at least curious, so let's do this.
 
-## Why download Wikipedia offline?
+## Why would you even want this?
 
-You might:
+A few reasons that might apply to you:
 
-- Be traveling to a place with limited internet access or censorship.
-- Want to keep an offline copy just in case.
-- Want to do it because it's fun.
+- You're traveling somewhere with spotty internet, censorship, or both
+- You want a local backup just in case things go sideways
+- You think it sounds fun and kind of ridiculous, which it is
 
-Disclaimer: This guide is for educational purposes only, use it in accordance with your local laws. 
+Disclaimer: This guide is for educational purposes only use it in accordance with your local laws.
 
-## Introducing [Kiwix](https://kiwix.org/en/)
+## Enter Kiwix
 
-[Kiwix](https://kiwix.org/en/) is a **Nonprofit** and their products are **free** and **open-source** with **no ads!**
+[Kiwix](https://kiwix.org/en/) is a nonprofit with free, open-source apps for literally every platform. Windows, macOS, Linux, Android, iOS, even the Raspberry Pi. No ads. No subscriptions. No catch.
 
-They also have apps for every platform, from Windows, MacOS, Linux, Android and iOS to even the Raspberry Pi.
+Their whole thing is letting you download offline versions of wikis, documentation, and other reference content so you can access them without an internet connection.
 
-## What can you download using [Kiwix](https://kiwix.org/en/)?
+## What can you actually download?
 
-[Kiwix](https://kiwix.org/en/) has a huge library of wiki’s -and much more- you could choose from, here are some highlights from their library:
+Their library is surprisingly large. Here are some highlights:
 
-- Wikipedia
-    - with pictures / without pictures (differs greatly in size)
-    - multiple languages
-    - you can also choose a specific category in Wikipedia if you don’t want to download the whole wiki
-- Ted Talks
-- Arch Wiki / Gento Wiki / Nix Wiki
-- The docs for programming languages, frameworks and tools like
-    - C++, Go, JavaScript and Kotlin docs
-    - React, Vue and Angular docs
-    - npm, and Git docs
-    - And much more!
+- **Wikipedia** with or without pictures (the picture version is well over 100GB, just so you know), in multiple languages, with the option to grab only a specific category if the full thing is overkill
+- **Ted Talks**
+- **Arch Wiki, Gentoo Wiki, Nix Wiki** for when you need to debug something and your internet is the thing that broke
+- **Programming docs** C++, Go, JavaScript, Kotlin, React, Vue, Angular, npm, Git, and more
 
-You can check their entire library by [clicking here](https://library.kiwix.org/#lang=eng&q=)
+You can browse the full library at [library.kiwix.org](https://library.kiwix.org/#lang=eng&q=).
 
-## How to download [Kiwix](https://kiwix.org/en/)?
+## How to get Kiwix
 
-- On Windows:
-    - Head to the [Downloads section](https://kiwix.org/en/applications/) in their website
-    - Scroll down to Windows and click download
-    - Here is the [direct download link](https://download.kiwix.org/release/kiwix-desktop/kiwix-desktop_windows_x64.zip)
-    - Now extract the .zip file you just downloaded
-    - 
-- On Linux:
-    - In Arch Linux run this command:
-    
-    ```bash
-    sudo pacman -S kiwix-desktop
-    ```
-    
-    - In Fedora run this command:
-    
-    ```bash
-    sudo dnf install kiwix-desktop
-    ```
-    
-    - In Debian or Ubuntu run this command:
-    
-    ```bash
-    sudo apt install kiwix
-    ```
-    
-- On Android, iOS, and MacOS:
-    - Just download it from your respective App store
-    - Here are direct links, [Android](https://play.google.com/store/apps/details?id=org.kiwix.kiwixmobile&pli=1), [iOS/MacOS](https://apps.apple.com/us/app/kiwix/id997079563)
-- Kiwix Server
-    
-    They also have Kiwix Server which allows you to serve the things you download to your local network if you want, but this is outside the scope of this tutorial.
-    
+- **Windows:** Head to their [Downloads page](https://kiwix.org/en/applications/), scroll down to Windows, and grab the zip. Extract it and you're done. Here's a [direct download link](https://download.kiwix.org/release/kiwix-desktop/kiwix-desktop_windows_x64.zip) if you prefer.
+- **Linux:**
+    - Arch Linux: `sudo pacman -S kiwix-desktop`
+    - Fedora: `sudo dnf install kiwix-desktop`
+    - Debian/Ubuntu: `sudo apt install kiwix`
+- **Android, iOS, macOS:** Just grab it from your respective app store [Android](https://play.google.com/store/apps/details?id=org.kiwix.kiwixmobile&pli=1), [iOS/macOS](https://apps.apple.com/us/app/kiwix/id997079563)
 
-## Using [Kiwix](https://kiwix.org/en/)
+They also have a Kiwix Server option for serving your downloads across your local network, but that's a whole separate rabbit hole.
 
-Just click On “All files” in the top left corner of the main screen, and choose what you want to download and click download, it’s that easy!
-You might be asked where you want to save the file, choose a suitable place depending on your needs.
+## Using it
 
-ensure the folder you choose has enough free space, especially if you plan on downloading the entire Wikipedia catalog with picture as its size is more than 100 GB. 
+Click "All Files" in the top left, browse the library, and hit download on whatever you want. That's genuinely all there is to it.
 
-You can also change the download directory later if you change your mind be clicking on the tree dots in the top right corner then click “settings” then change the setting called “Download directory”
-## Opening what you downloaded
-Just click on "Local Files" under “All files”, then click on "open".
+You'll be asked where to save the file pick somewhere with enough space. If you're downloading the full Wikipedia with pictures, make sure you have 100GB+ free. You can also change the download directory later through the three-dot menu → Settings.
 
-Now you can enjoy offline access to your favorite Wiki’s and Docs!
+Once something's downloaded, go to "Local Files" under "All Files" and click "open." Done.
+
+Now go enjoy your offline Wikipedia rabbit holes.
 
 #
