@@ -1,31 +1,38 @@
-# **Top .bashrc Aliases to Save Time**
+# Top .bashrc Aliases to Save Time
 
-## Why use bashrc aliases?
+The command line is already faster than pointing and clicking at things. Aliases make it faster still.
 
-- Using aliases enhances your command-line productivity noticeably, saving you key strokes and time.
-- It’s just cool and enjoyable since you’re customizing your command-line experience exactly to your liking.
-
----
-
-## Where to find bashrc file?
-
-The file can be found in “~/.bashrc” and you can open it with your favourite text editor Nano or Vim (if you can manage quitting Vim ofc).
-
-If the file doesn’t exist you can just run “sudo mkfile ~/.bashrc”, wait a minute! “mkfile” isn’t actually a linux command, is it? That’s the beauty of using aliases, in my bashrc file i have this line “ alias mkfile='touch’ ” which allows me to use “mkfile” instead of “touch”, ofc you don’t have to the same, it’s all personal preference.
-
-Ok now actually how do you create the file if it doesn’t exist? run the following command “sudo touch ~/.bashrc”.
-
- 
+The idea is simple: you take commands you type constantly and give them shorter, easier-to-type names. Less keystrokes, less time, and honestly there's something deeply satisfying about having a terminal configured exactly the way you want it.
 
 ---
 
-## How is the .bashrc file structured?
+## Finding and opening your .bashrc
 
-initially the file is empty, you start by typing “ alias YourDesiredAlias=’ActualCommand’ “, view the examples below to understand it better.
+The file lives at `~/.bashrc`. Open it with whatever text editor you prefer Nano, Vim, whatever. If you can escape Vim, that is.
+
+If the file doesn't exist, create it with:
+
+```bash
+sudo touch ~/.bashrc
+```
+
+A small aside: in my own .bashrc, I have `alias mkfile='touch'`, so I can just type `mkfile` instead of `touch`. Completely unnecessary, completely correct. That's the kind of small, pointless-yet-delightful customization that makes the whole thing worth it.
 
 ---
 
-## **Categories of Aliases**
+## Structure
+
+Aliases follow a simple format:
+
+```bash
+alias yourAlias='actual command here'
+```
+
+That's it. One line per alias, drop them anywhere in the file, and they'll be available in every new terminal session.
+
+---
+
+## Categories
 
 1. Navigation
 2. Git Shortcuts
@@ -36,94 +43,97 @@ initially the file is empty, you start by typing “ alias YourDesiredAlias=’A
 
 ---
 
-Let’s dive right in!
-
 ## 1. Navigation
 
-#### Find yourself typing “cd ..” or “cd SomeSpecificDict”?
+If you find yourself typing `cd ..` over and over, or constantly navigating to the same folder, these will feel instantly obvious in hindsight:
 
-##### Use the following aliases: ( without the [] )
-
-- [alias ..="cd .."] #navigates up one directory
-- [alias ...="cd ../.."] #navigates up Two directories
-- [alias ....="cd ../../.."] #navigates up Three directories
-- [alias ~="cd ~"] #navigates to your home directory
-- [alias projects="cd ~/projects"] # Replace with your specific folder path
+```bash
+alias ..="cd .."          # up one directory
+alias ...="cd ../.."      # up two directories
+alias ....="cd ../../.."  # up three directories
+alias ~="cd ~"            # go home
+alias projects="cd ~/projects"  # replace with your own path
+```
 
 ## 2. Git Shortcuts
 
-#### Use git for version control a lot?
+I type git commands constantly. These save a lot of keystrokes:
 
-##### Use the following aliases: (don’t feel like explaining the commands :) )
-
-- [alias gs="git status"]
-- [alias ga.="git add ."]
-- [alias gcm="git commit -m"]
-- [alias gc='git clone ']
-- [alias gp="git push"]
-- [alias gd="git diff"]
-- [alias gds="git diff --staged"]
+```bash
+alias gs="git status"
+alias ga.="git add ."
+alias gcm="git commit -m"
+alias gc='git clone '
+alias gp="git push"
+alias gd="git diff"
+alias gds="git diff --staged"
+```
 
 ## 3. Managing Updates
 
-#### Tired of typing “sudo pacman -Syu” or “sudo apt update”?
+Adjust these to match your Linux distribution the ones below are for Arch. If you're on something else, just swap in the equivalent commands.
 
-##### Use the following aliases: (Adjust commands to match your Linux distribution, the current aliases are meant for Arch)
+**Pacman:**
+```bash
+alias ps="sudo pacman -S"
+alias psy="sudo pacman -Sy"
+alias psyu="sudo pacman -Syu"
+alias pr="sudo pacman -R"
+alias ro='sudo pacman -Rns $(pacman -Qtdq)'  # remove orphaned packages
+```
 
-- Pacman aliases
-    - [alias ps="sudo pacman -S"]
-    - [alias psy="sudo pacman -Sy"]
-    - [alias psyu="sudo pacman -Syu"]
-    - [alias pr="sudo pacman -R"]
-    - [alias ro='sudo pacman -Rns $(pacman -Qtdq)'] #remove orphan packages
-- Yay aliases
-    - [alias ys="yay -S"]
-    - [alias ysy="yay -Sy"]
-    - [alias ysyu="yay -Syu"]
-    - [alias yr="yay -R"]
-    - [alias yqu="yay -Qu"] #lists the names of packages that need updating
-    - [s] #lists all manually installed packages on your system
-- Flatpak aliases
-    - [alias fs="flatpak install"]
-    - [alias fsyu="flatpak update"]
-    - [alias fqu="flatpak remote-ls --updates"] #lists the names of all flatpak updates
+**Yay (AUR helper):**
+```bash
+alias ys="yay -S"
+alias ysy="yay -Sy"
+alias ysyu="yay -Syu"
+alias yr="yay -R"
+alias yqu="yay -Qu"  # list packages with available updates
+```
+
+**Flatpak:**
+```bash
+alias fs="flatpak install"
+alias fsyu="flatpak update"
+alias fqu="flatpak remote-ls --updates"  # list available flatpak updates
+```
 
 ## 4. System Commands
 
-#### Dual booting windows and linux? Then windows updates probably messes up grub every once and a while.
+If you dual-boot Windows and Linux, Windows updates have a tendency to trample your GRUB bootloader at the most inconvenient times. This alias has saved me more than once:
 
-##### Use the following alias:
-
-- [alias grubupdate='sudo grub-mkconfig -o /boot/grub/grub.cfg' #updates grub]
+```bash
+alias grubupdate='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+```
 
 ## 5. File Management
 
-#### Want to make “ls” colorfull, grouped or ordered but you don’t want to type long commands each time?
+These turn `ls` from functional into actually pleasant to read:
 
-##### Use the following aliases: (feel free to change the alias if you don’t like the ones i chose)
-
-- [alias l="ls --color=auto -h --group-directories-first"] #Lists files with colors, human-readable sizes, and directories displayed before files
-- [alias ls="ls --color=auto -h --group-directories-first"] #Overrides “ls” to act just like “l” that we just made
-- [alias la="ls --color=auto -ha --group-directories-first"] #Lists all files, including hidden ones, with colors, human-readable sizes, and directories first
-- [alias ll="ls --color=auto -hal --group-directories-first"] #Provides a detailed list (long format) of all files, including hidden ones, with colors, human-readable sizes, and directories first
+```bash
+alias l="ls --color=auto -h --group-directories-first"
+alias ls="ls --color=auto -h --group-directories-first"   # override default ls
+alias la="ls --color=auto -ha --group-directories-first"  # include hidden files
+alias ll="ls --color=auto -hal --group-directories-first" # full long format
+```
 
 ## 6. Misc.
 
-#### Want your system to shutdown after X time passes?
+For scheduling shutdowns useful when you're rendering something overnight and don't want the machine running until morning:
 
-##### Use the following: (replace X with desired time, add as many aliases as you want with different times)
-
-- [alias sdn="shutdown now"] #immediately shuts down
-- [alias sd30="shutdown +X"] #shuts down after X minutes passes
-- [alias sds="shutdown --show”] #shows scheduled shutdown
-- [alias sdc="shutdown -c”] #cancels the scheduled shutdown
-
----
-
-#### [Check out my own .bachrc on github.](https://github.com/lidwan/dotfiles/blob/main/arch-hypr-script/.bashrc)
+```bash
+alias sdn="shutdown now"
+alias sd30="shutdown +X"    # replace X with desired minutes
+alias sds="shutdown --show" # check scheduled shutdown
+alias sdc="shutdown -c"     # cancel scheduled shutdown
+```
 
 ---
 
-#### Now create your own aliases for your most used commands so that can save time!
+[Check out my own .bashrc on GitHub](https://github.com/lidwan/dotfiles/blob/main/arch-hypr-script/.bashrc) if you want to see what I actually use.
+
+---
+
+Start small. Pick the commands you type most often and alias them. You'll wonder how you put up with the extra keystrokes before.
 
 #
