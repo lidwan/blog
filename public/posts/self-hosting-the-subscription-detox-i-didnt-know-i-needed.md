@@ -109,6 +109,22 @@ It is an excellent alternative to Google Photos, with a sleek interface, a mobil
 
 For a self-hosted service, it feels surprisingly polished.
 
+### Nextcloud
+
+I self-host Nextcloud, and while it can do approximately a thousand things, my main use for it is calendar and task syncing.
+
+On my Mac, it syncs beautifully with Fantastical, and on Android, it talks to DAVx⁵. The result is that my calendar and tasks stay perfectly in sync across all my devices without a single Google or Apple server involved in the conversation.
+
+Beyond that, Nextcloud is essentially a self-hosted Swiss Army knife. It can replace Google Drive, handle file syncing, manage contacts, and probably do your taxes if someone writes a plugin for it. It is one of those services where the hardest part is resisting the urge to enable every single app in the marketplace.
+
+### Vaultwarden
+
+For password management, I run Vaultwarden.
+
+It is a lightweight, self-hosted implementation of the Bitwarden server, which means I get to use all of Bitwarden's official apps and browser extensions while keeping my vault entirely on my own hardware. All the convenience of a commercial password manager, none of the "please trust us with every credential you own" energy.
+
+Of all the services in my setup, this one might be the most non-negotiable. Losing access to your photos is painful. Losing access to your passwords is catastrophic.
+
 ### AIOStreams
 
 I also self-host AIOStreams, which is an add-on that groups Stremio add-ons.
