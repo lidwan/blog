@@ -51,7 +51,7 @@ With that out of the way, here are the services I host.
 
 ## Services I host in the cloud
 
-### Coolify
+### [Coolify](https://github.com/coollabsio/coolify)
 
 I run Coolify on my VPS.
 
@@ -59,7 +59,7 @@ Coolify is basically a free and open-source alternative to Vercel, and if you ha
 
 My main use case for Coolify is deploying my portfolio and blog so they are publicly accessible on the internet.
 
-### AdGuard Home (backup DNS)
+### [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) (backup DNS)
 
 I also host a backup AdGuard Home DNS server on my VPS.
 
@@ -67,7 +67,7 @@ My main DNS server runs locally at home, but having a backup instance in the clo
 
 That means I get network-wide ad and tracker blocking not just at home, but on my connected devices wherever I am.
 
-### n8n
+### [n8n](https://github.com/n8n-io/n8n)
 
 I also self-host n8n.
 
@@ -75,7 +75,7 @@ I am very intrigued by workflow automation and what n8n can do, although I have 
 
 Not exactly a huge automation empire, but it is a start.
 
-### ChangeDetection
+### [ChangeDetection](https://github.com/dgtlmoon/changedetection.io)
 
 I run ChangeDetection on my VPS to continuously monitor certain websites and get alerted whenever something changes.
 
@@ -83,13 +83,13 @@ It is one of those services that sounds niche until you realize how many things 
 
 It just sits there, refreshing pages on a schedule, and pings me whenever something is different. Simple, effective, and occasionally the bearer of very good news.
 
-### Beszel client
+### [Beszel](https://github.com/henrygd/beszel) client
 
 My VPS also runs a Beszel client, which ties into the monitoring setup I use across both my servers. More on that in a bit.
 
 ## Services I host on my home server
 
-### AdGuard Home (primary DNS)
+### [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) (primary DNS)
 
 My primary AdGuard Home instance runs on my home server.
 
@@ -97,19 +97,19 @@ This is intentional. DNS benefits a lot from being local, and hosting it at home
 
 In simple terms: local DNS feels faster because it usually is.
 
-### Uptime Kuma
+### [Uptime Kuma](https://github.com/louislam/uptime-kuma)
 
 I use Uptime Kuma to monitor all my Docker containers and websites.
 
 It is one of those tools that just does its job well. I have it configured to send me Telegram notifications whenever a service or site goes down, which means I do not have to manually check whether something broke. The server gets to panic for me.
 
-### Dockge
+### [Dockge](https://github.com/louislam/dockge)
 
 I use Dockge for managing Docker containers on the fly.
 
 It makes container management much more convenient, especially when I want to quickly adjust, update, or inspect services without turning everything into a full production ritual.
 
-### Immich
+### [Immich](https://github.com/immich-app/immich)
 
 I also self-host Immich, which is honestly one of my favorite services in the whole setup.
 
@@ -117,7 +117,7 @@ It is an excellent alternative to Google Photos, with a sleek interface, a mobil
 
 For a self-hosted service, it feels surprisingly polished.
 
-### Nextcloud
+### [Nextcloud](https://github.com/nextcloud/server)
 
 I self-host Nextcloud, and while it can do approximately a thousand things, my main use for it is calendar and task syncing.
 
@@ -125,7 +125,7 @@ On my Mac, it syncs beautifully with Fantastical, and on Android, it talks to DA
 
 Beyond that, Nextcloud is essentially a self-hosted Swiss Army knife. It can replace Google Drive, handle file syncing, manage contacts, and probably do your taxes if someone writes a plugin for it. It is one of those services where the hardest part is resisting the urge to enable every single app in the marketplace.
 
-### Vaultwarden
+### [Vaultwarden](https://github.com/dani-garcia/vaultwarden)
 
 For password management, I run Vaultwarden.
 
@@ -133,7 +133,7 @@ It is a lightweight, self-hosted implementation of the Bitwarden server, which m
 
 Of all the services in my setup, this one might be the most non-negotiable. Losing access to your photos is painful. Losing access to your passwords is catastrophic.
 
-### Speedtest Tracker
+### [Speedtest Tracker](https://github.com/alexjustesen/speedtest-tracker)
 
 I run Speedtest Tracker on my home server to continuously monitor my internet speed.
 
@@ -141,13 +141,13 @@ It runs automated speed tests on a schedule and logs the results over time, whic
 
 It is also useful for keeping my ISP honest. If they promise certain speeds, I now have receipts.
 
-### AIOStreams
+### [AIOStreams](https://github.com/Viren070/AIOStreams)
 
 I also self-host AIOStreams, which is an add-on that groups Stremio add-ons.
 
 That is all I will say about that. *iykyk.*
 
-### Beszel
+### [Beszel](https://github.com/henrygd/beszel)
 
 For monitoring system resources, I use Beszel.
 
