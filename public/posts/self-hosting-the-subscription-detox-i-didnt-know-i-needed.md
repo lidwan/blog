@@ -75,6 +75,14 @@ I am very intrigued by workflow automation and what n8n can do, although I have 
 
 Not exactly a huge automation empire, but it is a start.
 
+### ChangeDetection
+
+I run ChangeDetection on my VPS to continuously monitor certain websites and get alerted whenever something changes.
+
+It is one of those services that sounds niche until you realize how many things you quietly wish you were keeping an eye on. Price drops on that gadget you have been eyeing. Stock availability for something perpetually sold out. A company quietly updating their privacy policy at 2 AM hoping nobody notices. ChangeDetection watches all of it so I do not have to.
+
+It just sits there, refreshing pages on a schedule, and pings me whenever something is different. Simple, effective, and occasionally the bearer of very good news.
+
 ### Beszel client
 
 My VPS also runs a Beszel client, which ties into the monitoring setup I use across both my servers. More on that in a bit.
@@ -124,6 +132,14 @@ For password management, I run Vaultwarden.
 It is a lightweight, self-hosted implementation of the Bitwarden server, which means I get to use all of Bitwarden's official apps and browser extensions while keeping my vault entirely on my own hardware. All the convenience of a commercial password manager, none of the "please trust us with every credential you own" energy.
 
 Of all the services in my setup, this one might be the most non-negotiable. Losing access to your photos is painful. Losing access to your passwords is catastrophic.
+
+### Speedtest Tracker
+
+I run Speedtest Tracker on my home server to continuously monitor my internet speed.
+
+It runs automated speed tests on a schedule and logs the results over time, which means I always have actual data to back me up when my connection feels suspiciously slow. There is something deeply satisfying about being able to pull up a graph and say, "No, it is not just me. The speeds really did drop last Tuesday."
+
+It is also useful for keeping my ISP honest. If they promise certain speeds, I now have receipts.
 
 ### AIOStreams
 
