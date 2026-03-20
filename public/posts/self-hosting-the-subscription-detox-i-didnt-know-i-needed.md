@@ -59,14 +59,6 @@ Coolify is basically a free and open-source alternative to Vercel, and if you ha
 
 My main use case for Coolify is deploying my portfolio and blog so they are publicly accessible on the internet.
 
-### [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) (backup DNS)
-
-I also host a backup AdGuard Home DNS server on my VPS.
-
-My main DNS server runs locally at home, but having a backup instance in the cloud gives me a fallback when needed. I use AdGuard Home to block ads and trackers across my network, and because I set it in my Tailscale DNS settings, any device connected to my tailnet can use it from anywhere.
-
-That means I get network-wide ad and tracker blocking not just at home, but on my connected devices wherever I am.
-
 ### [n8n](https://github.com/n8n-io/n8n)
 
 I also self-host n8n.
@@ -87,15 +79,17 @@ It just sits there, refreshing pages on a schedule, and pings me whenever someth
 
 My VPS also runs a Beszel client, which ties into the monitoring setup I use across both my servers. More on that in a bit.
 
+## Services I host on both
+
+### [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome)
+
+I use AdGuard Home to block ads and trackers across my entire network, and I run it in both places for good reason.
+
+The primary instance lives on my home server. DNS benefits a lot from being local, and hosting it at home gives me the best latency. It also avoids situations where requests get routed based on the VPS location instead of my actual location, which can sometimes lead to less optimal CDN endpoints. In simple terms: local DNS feels faster because it usually is.
+
+The backup instance runs on my VPS, giving me a fallback whenever the primary is unreachable. Because I set both in my Tailscale DNS settings, any device connected to my tailnet gets network-wide ad and tracker blocking wherever I am. At home, on the go, does not matter. The ads do not stand a chance either way.
+
 ## Services I host on my home server
-
-### [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) (primary DNS)
-
-My primary AdGuard Home instance runs on my home server.
-
-This is intentional. DNS benefits a lot from being local, and hosting it at home gives me the best latency. It also helps avoid situations where requests get routed based on the VPS location instead of my actual location, which can sometimes lead to less optimal CDN endpoints.
-
-In simple terms: local DNS feels faster because it usually is.
 
 ### [Uptime Kuma](https://github.com/louislam/uptime-kuma)
 
