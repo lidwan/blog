@@ -75,6 +75,22 @@ It is one of those services that sounds niche until you realize how many things 
 
 It just sits there, refreshing pages on a schedule, and pings me whenever something is different. Simple, effective, and occasionally the bearer of very good news.
 
+### [Umami](https://github.com/umami-software/umami)
+
+I run Umami on my VPS to handle analytics for my portfolio and blog.
+
+It is a lightweight, privacy-focused alternative to Google Analytics, which means I get to see who is visiting my sites without handing that data over to the advertising industrial complex. No cookies, no creepy tracking scripts following visitors around the internet, just clean, simple stats about page views and visitor trends.
+
+It tells me what I need to know and nothing more. Exactly how analytics should work.
+
+### [Homepage](https://github.com/gethomepage/homepage)
+
+I use Homepage as my central dashboard on the VPS.
+
+It is a clean, fast, and ridiculously customizable application dashboard that puts all my self-hosted services in one place. Instead of bookmarking a dozen different URLs and playing "which port was that again?" every time, I just open one page and everything is right there. It supports integrations with over a hundred services, shows real-time stats, and looks good doing it.
+
+Think of it as the lobby of my self-hosted hotel. Every service gets a nameplate on the wall.
+
 ### [Beszel](https://github.com/henrygd/beszel) client
 
 My VPS also runs a Beszel client, which ties into the monitoring setup I use across both my servers. More on that in a bit.
@@ -134,6 +150,28 @@ I run Speedtest Tracker on my home server to continuously monitor my internet sp
 It runs automated speed tests on a schedule and logs the results over time, which means I always have actual data to back me up when my connection feels suspiciously slow. There is something deeply satisfying about being able to pull up a graph and say, "No, it is not just me. The speeds really did drop last Tuesday."
 
 It is also useful for keeping my ISP honest. If they promise certain speeds, I now have receipts.
+
+### [VERT](https://github.com/VERT-sh/VERT)
+
+I self-host VERT on my home server for file conversion right in the browser.
+
+Need to turn a PNG into a WebP? A DOCX into a PDF? VERT handles it all locally without uploading anything to some random conversion site that probably does who-knows-what with your files. Everything runs in the browser, fast and private.
+
+I also run [vertd](https://github.com/VERT-sh/vertd) alongside it, which handles the heavier server-side video conversions that would make a browser tap out. Between the two of them, most of my file conversion needs are covered without ever leaving my own network.
+
+### [BentoPDF](https://github.com/alam00000/bentopdf/)
+
+I run BentoPDF for handling PDFs directly in the browser.
+
+Merging, splitting, compressing, converting all the PDF operations that usually send you to one of those ad-infested "free PDF tools" websites. Except this one runs on my own server, so my documents stay exactly where they should: with me. It is one of those services I do not use every day, but when I need it, I am very glad it is there.
+
+### [MeTube](https://github.com/alexta69/metube)
+
+I also run MeTube for downloading media.
+
+It is a clean web UI for yt-dlp, which means I can grab videos or audio from a long list of supported sites without needing to remember command-line flags or wrestle with terminal windows. Just paste a URL, pick a format, and let it do its thing.
+
+Perfect for saving tutorials, lectures, or anything else I might want to watch later without relying on the internet to keep it available forever.
 
 ### [AIOStreams](https://github.com/Viren070/AIOStreams)
 
