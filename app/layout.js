@@ -48,11 +48,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         {children}
-        <Script
-          src="https://static.cloudflareinsights.com/beacon.min.js"
-          data-cf-beacon='{"token": "8020fd82c2784a44a6eba9dbe3b513f2"}'
-          strategy="afterInteractive"
-        />
+        <script defer src="https://umami.loayidwan.com/script.js" data-website-id="e56fb711-0148-49b8-b5bd-ad8c84044110"></script>
       </body>
     </html>
   );
