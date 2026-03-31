@@ -33,19 +33,35 @@ That split has worked really well for me. The cloud handles the public-facing st
 
 Before talking about the actual services, it makes sense to talk about how I manage my servers.
 
-The short version: Tailscale is carrying this setup on its back.
+The short version: I self-host [NetBird](https://github.com/netbirdio/netbird), and it is carrying this entire setup on its back.
 
-I use Tailscale to connect all my devices and servers into a secure private network. It is free for personal use, easy to set up, and makes remote management absurdly convenient. It essentially creates a mesh VPN, which means my devices can talk to each other securely from anywhere in the world.
+NetBird is an open-source mesh VPN, similar in concept to Tailscale or ZeroTier, but with one crucial difference: you can self-host the entire thing. The management server, the relay infrastructure, all of it. No third-party company sitting in the middle of my network traffic, no trusting someone else's infrastructure with the keys to my devices. My mesh, my rules.
 
-One of the most useful features for me is the ability to use either my home server or my VPS as an exit node. That is handy on its own, but the real magic is in how Tailscale lets me lock things down.
+That alone made the switch worth it. There is something deeply satisfying about running your own VPN network and knowing that exactly zero companies are involved in the conversation between your devices.
 
-Anything that does not need to be public stays accessible only within my tailnet. Combined with device tagging and granular permissions, this gives me very fine control over what can talk to what. I can allow certain devices to access only specific services on specific ports, while everything else is denied by default.
+One of my favorite parts of the setup is the DNS and certificate situation. I use Caddy with DNS challenges to get publicly valid SSL certificates for domain names that only resolve within my NetBird network. From the outside, those domains go nowhere. From inside the network, everything gets a clean HTTPS connection with a real certificate. No self-signed certificate warnings, no browser complaints, just proper TLS for internal services. It is the kind of setup that feels almost too clean.
 
-That deny-by-default model is one of my favorite parts of the setup. It is clean, secure, and much less stressful than exposing services to the public internet and hoping for the best.
+SSH is locked down to NetBird SSH only. Port 22 is not exposed anywhere, not on the home server, not on the VPS, not on anything. The only way to SSH into any of my machines is through the NetBird network. If you are not on it, those servers might as well not exist.
 
-The single most useful thing Tailscale gives me in practice is simple: I can SSH into any of my servers from anywhere without exposing port 22 or any other SSH port publicly.
+I also use different servers as exit nodes, so when I need a more traditional VPN experience, I can route my traffic through whichever server makes sense. Need to appear like I am at home while traveling? Exit through the home server. Need a cloud IP? Exit through the VPS. It is flexible and surprisingly convenient.
 
-For extra security on top of that, I also use UFW for firewall rules.
+The real security backbone, though, is the access policies. Every device and server on the network has detailed rules defining exactly which ports it can talk to on which other devices. If a device gets compromised, it cannot just start poking around the entire network. It can only reach what it was explicitly allowed to reach, and nothing more. Deny by default, allow by exception.
+
+That model gives me a lot of peace of mind. It is clean, granular, and much less stressful than exposing services to the public internet and hoping for the best.
+
+## How I protect public-facing services
+
+NetBird with Caddy or Traefik handles the internal side of things, but some services need to face the public internet. This blog, for example, is not much use if nobody can reach it. For everything that needs to be publicly accessible, Cloudflare is doing the heavy lifting.
+
+The setup works like this: my domain DNS records point to my VPS IP, but they are proxied through Cloudflare. That means traffic never hits my server directly. It goes through Cloudflare first, where it gets filtered for bots, shielded from DDoS attacks, and served from cache when possible, taking some load off my server in the process.
+
+And the bot situation is genuinely wild. On a given day, maybe 10 actual humans visit my blog, I know this because I track it with my own self-hosted Umami analytics. But Cloudflare's dashboard? It might report 7,000 hits. The difference is entirely bots. Scraping companies, AI crawlers, and bad actors probing random URLs hoping to find an exposed admin panel. The sheer volume of requests to paths like `/admin` or `/.env` from complete strangers is both impressive and deeply unsettling. Cloudflare handles all of that so my server does not have to.
+
+For the certificate side of things, I use a long-lived Cloudflare Origin certificate on my server. This certificate is only trusted by Cloudflare's edge servers, not by browsers directly. Cloudflare then handles the final certificate that visitors actually see. The result is full end-to-end encryption without needing to manage public-facing certificates myself.
+
+To tie the whole thing together, I lock down ports 80 and 443 on my VPS with UFW rules that only accept traffic from Cloudflare's edge server IP ranges. Even if someone knows my VPS IP address, they cannot hit my server directly. Every request must go through Cloudflare first. No exceptions.
+
+It is a simple setup, but it means my public services get enterprise-grade protection without me needing to think about it much. Cloudflare stops the noise, and my server only sees the traffic that actually matters.
 
 With that out of the way, here are the services I host.
 
@@ -103,7 +119,7 @@ I use AdGuard Home to block ads and trackers across my entire network, and I run
 
 The primary instance lives on my home server. DNS benefits a lot from being local, and hosting it at home gives me the best latency. It also avoids situations where requests get routed based on the VPS location instead of my actual location, which can sometimes lead to less optimal CDN endpoints. In simple terms: local DNS feels faster because it usually is.
 
-The backup instance runs on my VPS, giving me a fallback whenever the primary is unreachable. Because I set both in my Tailscale DNS settings, any device connected to my tailnet gets network-wide ad and tracker blocking wherever I am. At home, on the go, does not matter. The ads do not stand a chance either way.
+The backup instance runs on my VPS, giving me a fallback whenever the primary is unreachable. Because I set both in my NetBird DNS settings, any device connected to my network gets network-wide ad and tracker blocking wherever I am. At home, on the go, does not matter. The ads do not stand a chance either way.
 
 ## Services I host on my home server
 
