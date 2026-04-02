@@ -39,19 +39,33 @@ NetBird is an open-source mesh VPN, similar in concept to Tailscale or ZeroTier,
 
 That alone made the switch worth it. There is something deeply satisfying about running your own VPN network and knowing that exactly zero companies are involved in the conversation between your devices.
 
-One of my favorite parts of the setup is the DNS and certificate situation. I use Caddy with DNS challenges to get publicly valid SSL certificates for domain names that only resolve within my NetBird network. From the outside, those domains go nowhere. From inside the network, everything gets a clean HTTPS connection with a real certificate. No self-signed certificate warnings, no browser complaints, just proper TLS for internal services. It is the kind of setup that feels almost too clean.
+One of my favorite parts of the setup is the DNS and certificate situation. I use Caddy with DNS challenges to get publicly valid SSL certificates for domain names that only resolve within my NetBird network. From the outside, those domains go nowhere. From inside the Netbird network or from my Home network (more on that in the next section), everything gets a clean HTTPS connection with a real certificate. No self-signed certificate warnings, no browser complaints, just proper TLS for internal services. It is the kind of setup that feels almost too clean.
 
 SSH is locked down to NetBird SSH only. Port 22 is not exposed anywhere, not on the home server, not on the VPS, not on anything. The only way to SSH into any of my machines is through the NetBird network. If you are not on it, those servers might as well not exist.
 
-I also use different servers as exit nodes, so when I need a more traditional VPN experience, I can route my traffic through whichever server makes sense. Need to appear like I am at home while traveling? Exit through the home server. Need a cloud IP? Exit through the VPS. It is flexible and surprisingly convenient.
+I also use the VPS and my Home server as exit nodes, so when I need a more traditional VPN experience, I can route my traffic through whichever server makes sense. Need to appear like I am at home while traveling? Exit through the home server. Need a cloud IP? Exit through the VPS. It is flexible and surprisingly convenient.
 
 The real security backbone, though, is the access policies. Every device and server on the network has detailed rules defining exactly which ports it can talk to on which other devices. If a device gets compromised, it cannot just start poking around the entire network. It can only reach what it was explicitly allowed to reach, and nothing more. Deny by default, allow by exception.
 
 That model gives me a lot of peace of mind. It is clean, granular, and much less stressful than exposing services to the public internet and hoping for the best.
 
+### Making home services reachable from everywhere
+
+For the services running on my home server at `192.168.x.xxx`, Caddy sits in front of them as a reverse proxy handling HTTPS. The challenge was: I wanted all my devices to access these services, both the ones on my home WiFi and the ones I use remotely with NetBird, without having to install NetBird on every single device in the house. And even for devices that do have NetBird installed, I did not want to keep it connected all the time because the battery draw is genuinely painful. For reference, a phone connected to NetBird used 38% battery just idling for 9 hours overnight. That is not a typo.
+
+The solution turned out to be surprisingly elegant.
+
+For DNS, I pointed all my domain A records in Cloudflare to my server's LAN IP `192.168.x.xxx`. Every device resolves to the same address regardless of where it is.
+
+For my local home devices, this just works. My phone on WiFi resolves `service.domain.tld` to `192.168.x.xxx`, and since it is on the same `192.168.0.0/24` subnet, the traffic goes straight over my LAN to Caddy. No VPN, no tunnel, just regular local network traffic doing exactly what local network traffic is supposed to do.
+
+For my remote devices running NetBird, I advertised my entire home LAN subnet `192.168.0.0/24` as a Network in the NetBird dashboard, with my home server as the routing peer. This tells every remote NetBird peer that if they need to reach anything on `192.168.0.0/24`, they should send that traffic through the WireGuard tunnel to my home server. So when my phone is outside the house and resolves `service.domain.tld` to `192.168.x.xxx`, instead of that being a dead end, since it is a private IP that does not exist on whatever public network I am on, the NetBird client intercepts it and tunnels it to my home server. My server receives the packet on Netbird interface, NATs the source IP via masquerade, and forwards it to `192.168.x.xxx`, which is itself. Caddy picks it up and serves the response back through the tunnel. It is one of those setups that sounds complicated when you describe it but feels invisible when you use it.
+
+Finally, to keep things locked down on the home front, all guest devices and IoT gadgets sit on a separate local guest network that cannot reach `192.168.0.0/24`. Because the last thing I need is a compromised smart Tv or a Guest's compromised phone poking around my self-hosted services.
+
 ## How I protect public-facing services
 
-NetBird with Caddy or Traefik handles the internal side of things, but some services need to face the public internet. This blog, for example, is not much use if nobody can reach it. For everything that needs to be publicly accessible, Cloudflare is doing the heavy lifting.
+NetBird with Caddy handle the internal side of things, serving services to my Netbird network, but some services need to face the public internet. This blog, for example, is not much use if nobody can reach it. For everything that needs to be publicly accessible, Cloudflare is doing the heavy lifting.
 
 The setup works like this: my domain DNS records point to my VPS IP, but they are proxied through Cloudflare. That means traffic never hits my server directly. It goes through Cloudflare first, where it gets filtered for bots, shielded from DDoS attacks, and served from cache when possible, taking some load off my server in the process.
 
