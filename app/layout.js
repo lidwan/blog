@@ -1,5 +1,5 @@
 import "./globals.css";
-import Script from "next/script";
+import OutboundLinkTracker from "./components/OutboundLinkTracker";
 
 export const metadata = {
   metadataBase: new URL("https://blog.loayidwan.com"),
@@ -48,6 +48,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         {children}
+        <OutboundLinkTracker />
         <script defer src="https://umami.loayidwan.com/script.js" data-website-id="e56fb711-0148-49b8-b5bd-ad8c84044110"></script>
       </body>
     </html>
