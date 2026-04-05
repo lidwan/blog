@@ -63,67 +63,21 @@ For my remote devices running NetBird, I advertised my entire home LAN subnet `1
 
 Finally, to keep things locked down on the home front, all guest devices and IoT gadgets sit on a separate local guest network that cannot reach `192.168.0.0/24`. Because the last thing I need is a compromised smart Tv or a Guest's compromised phone poking around my self-hosted services.
 
-## How I protect public-facing services
-
-NetBird with Caddy handle the internal side of things, serving services to my Netbird network, but some services need to face the public internet. This blog, for example, is not much use if nobody can reach it. For everything that needs to be publicly accessible, Cloudflare is doing the heavy lifting.
-
-The setup works like this: my domain DNS records point to my VPS IP, but they are proxied through Cloudflare. That means traffic never hits my server directly. It goes through Cloudflare first, where it gets filtered for bots, shielded from DDoS attacks, and served from cache when possible, taking some load off my server in the process.
-
-And the bot situation is genuinely wild. On a given day, maybe 10 actual humans visit my blog, I know this because I track it with my own self-hosted Umami analytics. But Cloudflare's dashboard? It might report 7,000 hits. The difference is entirely bots. Scraping companies, AI crawlers, and bad actors probing random URLs hoping to find an exposed admin panel. The sheer volume of requests to paths like `/admin` or `/.env` from complete strangers is both impressive and deeply unsettling. Cloudflare handles all of that so my server does not have to.
-
-For the certificate side of things, I use a long-lived Cloudflare Origin certificate on my server. This certificate is only trusted by Cloudflare's edge servers, not by browsers directly. Cloudflare then handles the final certificate that visitors actually see. The result is full end-to-end encryption without needing to manage public-facing certificates myself.
-
-To tie the whole thing together, I lock down ports 80 and 443 on my VPS with UFW rules that only accept traffic from Cloudflare's edge server IP ranges. Even if someone knows my VPS IP address, they cannot hit my server directly. Every request must go through Cloudflare first. No exceptions.
-
-It is a simple setup, but it means my public services get enterprise-grade protection without me needing to think about it much. Cloudflare stops the noise, and my server only sees the traffic that actually matters.
-
 With that out of the way, here are the services I host.
 
 ## Services I host in the cloud
 
-### [Coolify](https://github.com/coollabsio/coolify)
+### [NetBird](https://github.com/netbirdio/netbird) Management
 
-I run Coolify on my VPS.
+The NetBird management server and relay infrastructure live on my VPS. This is the backbone of my entire networking setup , everything described in the sections above depends on it running. It handles peer authentication, network policies, DNS, and route advertisements, while the relay infrastructure makes sure devices can always connect even when direct peer-to-peer connections are not possible.
 
-Coolify is basically a free and open-source alternative to Vercel, and if you have ever used Vercel, you already know the appeal: fast deployments, a clean interface, and a much simpler workflow for shipping apps.
+NetBird ships with Traefik as its default reverse proxy, but I also run Caddy alongside it for handling the DNS challenges and internal HTTPS setup described in the sections above.
 
-My main use case for Coolify is deploying my portfolio and blog so they are publicly accessible on the internet.
-
-### [n8n](https://github.com/n8n-io/n8n)
-
-I also self-host n8n.
-
-I am very intrigued by workflow automation and what n8n can do, although I have not gone particularly deep with it yet. Right now, my usage is fairly simple: I have it watching GitHub releases RSS feeds for some of my favorite services, and it notifies me when new updates are published.
-
-Not exactly a huge automation empire, but it is a start.
-
-### [ChangeDetection](https://github.com/dgtlmoon/changedetection.io)
-
-I run ChangeDetection on my VPS to continuously monitor certain websites and get alerted whenever something changes.
-
-It is one of those services that sounds niche until you realize how many things you quietly wish you were keeping an eye on. Price drops on that gadget you have been eyeing. Stock availability for something perpetually sold out. A company quietly updating their privacy policy at 2 AM hoping nobody notices. ChangeDetection watches all of it so I do not have to.
-
-It just sits there, refreshing pages on a schedule, and pings me whenever something is different. Simple, effective, and occasionally the bearer of very good news.
-
-### [Umami](https://github.com/umami-software/umami)
-
-I run Umami on my VPS to handle analytics for my portfolio and blog.
-
-It is a lightweight, privacy-focused alternative to Google Analytics, which means I get to see who is visiting my sites without handing that data over to the advertising industrial complex. No cookies, no creepy tracking scripts following visitors around the internet, just clean, simple stats about page views and visitor trends.
-
-It tells me what I need to know and nothing more. Exactly how analytics should work.
-
-### [Homepage](https://github.com/gethomepage/homepage)
-
-I use Homepage as my central dashboard on the VPS.
-
-It is a clean, fast, and ridiculously customizable application dashboard that puts all my self-hosted services in one place. Instead of bookmarking a dozen different URLs and playing "which port was that again?" every time, I just open one page and everything is right there. It supports integrations with over a hundred services, shows real-time stats, and looks good doing it.
-
-Think of it as the lobby of my self-hosted hotel. Every service gets a nameplate on the wall.
+If this goes down, the rest of the setup gets very lonely very fast.
 
 ### [Beszel](https://github.com/henrygd/beszel) client
 
-My VPS also runs a Beszel client, which ties into the monitoring setup I use across both my servers. More on that in a bit.
+My VPS also runs a Beszel client, which ties into the monitoring setup I use on my home server. More on that in a bit.
 
 ## Services I host on both
 
@@ -148,6 +102,22 @@ It is one of those tools that just does its job well. I have it configured to se
 I use Dockge for managing Docker containers on the fly.
 
 It makes container management much more convenient, especially when I want to quickly adjust, update, or inspect services without turning everything into a full production ritual.
+
+### [n8n](https://github.com/n8n-io/n8n)
+
+I self-host n8n on my home server.
+
+I am very intrigued by workflow automation and what n8n can do, although I have not gone particularly deep with it yet. Right now, my usage is fairly simple: I have it watching GitHub releases RSS feeds for some of my favorite services, and it notifies me when new updates are published.
+
+Not exactly a huge automation empire, but it is a start.
+
+### [ChangeDetection](https://github.com/dgtlmoon/changedetection.io)
+
+I run ChangeDetection on my home server to continuously monitor certain websites and get alerted whenever something changes.
+
+It is one of those services that sounds niche until you realize how many things you quietly wish you were keeping an eye on. Price drops on that gadget you have been eyeing. Stock availability for something perpetually sold out. A company quietly updating their privacy policy at 2 AM hoping nobody notices. ChangeDetection watches all of it so I do not have to.
+
+It just sits there, refreshing pages on a schedule, and pings me whenever something is different. Simple, effective, and occasionally the bearer of very good news.
 
 ### [Immich](https://github.com/immich-app/immich)
 
@@ -222,6 +192,22 @@ I also configured alerts for things like:
 - high server temperature
 
 That makes it much easier to catch issues before they turn into "why is everything suddenly on fire?" moments.
+
+## Honorable mentions
+
+These are services I genuinely enjoyed running but eventually retired. Not because they were bad , quite the opposite , but because reality had a few notes.
+
+### [Coolify](https://github.com/coollabsio/coolify)
+
+Coolify is a free and open-source alternative to platforms like Vercel and Netlify. I used it for about a month to deploy my portfolio and blog, and it was a great way to learn what it actually takes to host websites entirely on my own. The interface is clean, deployments are straightforward, and the whole experience taught me a lot about how deployment platforms work under the hood.
+
+After a month, though, I decided to move both sites back to Vercel. Their free tier is genuinely generous, and given that my sites do not exactly get a flood of traffic, self-hosting a deployment platform for them just was not worth the overhead. Sometimes the best lesson from doing something yourself is learning when to let someone else handle it.
+
+### [Umami](https://github.com/umami-software/umami)
+
+Umami is a lightweight, privacy-focused analytics platform, and I ran it for about a month alongside Coolify. It was a genuinely nice alternative to Google Analytics, no cookies, no creepy tracking scripts, just clean stats. I mostly wanted to try running my own analytics stack and see what self-hosted observability looks like in practice.
+
+But with Vercel's free tier already including built-in analytics, maintaining a separate self-hosted analytics service for sites that barely get any traffic did not make much sense. It was a fun experiment and I am glad I tried it, but Vercel's built-in analytics covers everything I need without the extra moving parts.
 
 ## Do I actually need all of this?
 
