@@ -133,7 +133,7 @@ export async function generateMetadata({ params }) {
     const { post } = postData;
 
     return {
-      metadataBase: new URL("https://blog.loayidwan.com"),
+      metadataBase: new URL("https://lsblk.dev"),
       title: `${post.title} | Loay's Blog`,
       description: post.description,
       alternates: {

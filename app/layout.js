@@ -1,7 +1,7 @@
 import "./globals.css";
 
 export const metadata = {
-  metadataBase: new URL("https://blog.loayidwan.com"),
+  metadataBase: new URL("https://lsblk.dev"),
   title: "Loay's Blog",
   description: "Loay Idwan's Blog, Sharing thoughts on tech, coding, and open source.",
   keywords: "Loay Idwan, blog, technology, coding, open source, programming, web development",
@@ -26,11 +26,11 @@ export const metadata = {
     title: "Loay's Blog",
     siteName: "Loay's Blog",
     description: "Loay Idwan's Blog, Sharing thoughts on tech, coding, and open source.",
-    url: "https://blog.loayidwan.com",
+    url: "https://lsblk.dev",
     type: "website",
     images: [
       {
-        url: "https://blog.loayidwan.com/opengraph-image.png",
+        url: "https://lsblk.dev/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "Website for Loay Idwan's Blog, Sharing thoughts on tech, coding, and open source.",

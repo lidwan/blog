@@ -77,7 +77,7 @@ A solid, capable video editor. Multi-track editing, a wide range of effects and 
 
 Instead of formatting and re-flashing a USB drive every time you need a different ISO, Ventoy lets you put multiple ISOs on one drive and choose at boot. Just copy files in, no configuration required. It supports a vast range of Linux distros, Windows versions, and tools like GParted, and even supports persistent storage for some Linux distributions.
 
-I wrote a [dedicated post](https://blog.loayidwan.com/posts/how-to-install-ventoy-on-a-usb-flash-drive) on setting it up if you want the full walkthrough.
+I wrote a [dedicated post](https://lsblk.dev/posts/how-to-install-ventoy-on-a-usb-flash-drive) on setting it up if you want the full walkthrough.
 
 ## 9. [OBS](https://obsproject.com/) Screen recording and streaming
 
