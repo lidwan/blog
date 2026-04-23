@@ -80,17 +80,59 @@
 .toc {
   position: sticky;
   top: 6.5rem;
+  max-height: calc(100dvh - 7.5rem);
   display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
   gap: 1rem;
   padding: 1rem;
+  overflow: hidden;
+  isolation: isolate;
   border: 1px solid var(--color-border);
   border-radius: 1.3rem;
   background: rgba(255, 255, 255, 0.03);
+  background-clip: padding-box;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   animation: section-enter 900ms var(--motion-smooth) both;
   transition:
     transform 220ms var(--motion-swift),
     border-color 220ms ease,
     background-color 220ms ease;
+}
+
+.tocHeader {
+  min-height: 0;
+}
+
+.tocScroller {
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  padding-right: 0.35rem;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(182, 202, 255, 0.48) rgba(255, 255, 255, 0.04);
+}
+
+.tocScroller::-webkit-scrollbar {
+  width: 0.42rem;
+}
+
+.tocScroller::-webkit-scrollbar-track {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.tocScroller::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(182, 202, 255, 0.48);
+}
+
+.tocScroller::-webkit-scrollbar-thumb:hover {
+  background: rgba(216, 228, 255, 0.64);
 }
 
 .tocList {
@@ -317,6 +359,13 @@
   .toc {
     position: static;
     order: -1;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .tocScroller {
+    overflow: visible;
+    padding-right: 0;
   }
 }
 
