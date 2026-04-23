@@ -63,11 +63,11 @@ export default async function Page({ params }) {
   };
 
   return (
-    <main className={styles.main}>
+    <main className={`${styles.main} post-page`} data-page="post">
       <NavBar />
       <div className="page-shell">
         <div className={styles.stack}>
-          <section className={`glass-panel ${styles.hero}`}>
+          <section className={`glass-panel post-hero ${styles.hero}`}>
             <div className={styles.heroTop}>
               <Link href="/" className="inline-pill-link">
                 Back to archive
@@ -87,9 +87,9 @@ export default async function Page({ params }) {
           </section>
 
           <div className={styles.contentGrid}>
-            <article className={`glass-panel ${styles.articlePanel}`}>
+            <article className={`glass-panel post-article-panel ${styles.articlePanel}`}>
               <div className={styles.articleInner}>
-                <div className={styles.prose}>
+                <div className={`post-prose ${styles.prose}`}>
                   <ReactMarkdown rehypePlugins={[rehypeRaw]} components={markdownComponents}>
                     {content}
                   </ReactMarkdown>
@@ -99,21 +99,23 @@ export default async function Page({ params }) {
             </article>
 
             {headings.length > 0 ? (
-              <aside className={styles.toc}>
-                <div>
+              <aside className={`${styles.toc} post-toc`}>
+                <div className={styles.tocHeader}>
                   <p className="section-kicker">On this page</p>
                 </div>
-                <nav className={styles.tocList} aria-label="Table of contents">
-                  {headings.map((heading) => (
-                    <a
-                      key={heading.id}
-                      href={`#${heading.id}`}
-                      className={`${styles.tocLink} ${heading.level === 3 ? styles.tocIndent : ""}`}
-                    >
-                      {heading.title}
-                    </a>
-                  ))}
-                </nav>
+                <div className={`${styles.tocScroller} post-toc-scroller`}>
+                  <nav className={styles.tocList} aria-label="Table of contents">
+                    {headings.map((heading) => (
+                      <a
+                        key={heading.id}
+                        href={`#${heading.id}`}
+                        className={`${styles.tocLink} ${heading.level === 3 ? styles.tocIndent : ""}`}
+                      >
+                        {heading.title}
+                      </a>
+                    ))}
+                  </nav>
+                </div>
               </aside>
             ) : null}
           </div>
