@@ -10,7 +10,7 @@
 .section {
   display: grid;
   gap: 1rem;
-  animation: section-enter 800ms ease both;
+  animation: section-enter 800ms var(--motion-smooth) both;
 }
 
 .sectionHeader {
@@ -40,10 +40,10 @@
   -webkit-transform: translate3d(0, 0, 0);
   will-change: transform;
   transition:
-    transform 220ms ease,
-    -webkit-transform 220ms ease,
+    transform 280ms var(--motion-swift),
+    -webkit-transform 280ms var(--motion-swift),
     border-color 220ms ease,
-    box-shadow 220ms ease,
+    box-shadow 280ms ease,
     background-color 220ms ease;
 }
 
@@ -55,19 +55,55 @@
   height: 20rem;
   border-radius: 999px;
   background: radial-gradient(circle, rgba(100, 146, 255, 0.22), transparent 68%);
+  opacity: 0.82;
+  transform: translate3d(0, 0, 0) scale(1);
+  transition:
+    transform 420ms var(--motion-swift),
+    opacity 280ms ease,
+    filter 420ms ease;
+  will-change: transform;
+  z-index: 0;
+}
+
+.featured::after {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  background: linear-gradient(115deg, transparent 32%, rgba(255, 255, 255, 0.08) 50%, transparent 68%);
+  opacity: 0;
+  transform: translate3d(-16%, 0, 0) rotate(8deg);
+  transition:
+    transform 500ms var(--motion-swift),
+    opacity 300ms ease;
+  pointer-events: none;
   z-index: 0;
 }
 
 .featuredLink:hover .featured,
 .featuredLink:focus-visible .featured,
 .featuredLink:focus-within .featured {
-  transform: translate3d(0, -4px, 0);
-  -webkit-transform: translate3d(0, -4px, 0);
+  transform: translate3d(0, -6px, 0);
+  -webkit-transform: translate3d(0, -6px, 0);
   border-color: var(--color-border-strong);
   background: var(--color-surface-hover);
   box-shadow:
     0 24px 60px rgba(1, 7, 20, 0.42),
     0 0 0 1px rgba(133, 162, 255, 0.05);
+}
+
+.featuredLink:hover .featured::before,
+.featuredLink:focus-visible .featured::before,
+.featuredLink:focus-within .featured::before {
+  opacity: 1;
+  transform: translate3d(-1rem, -0.85rem, 0) scale(1.08);
+  filter: saturate(1.15);
+}
+
+.featuredLink:hover .featured::after,
+.featuredLink:focus-visible .featured::after,
+.featuredLink:focus-within .featured::after {
+  opacity: 1;
+  transform: translate3d(14%, 0, 0) rotate(8deg);
 }
 
 .featuredContent {
@@ -120,6 +156,26 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.25rem;
+}
+
+.latestGrid > * {
+  animation: card-enter 700ms var(--motion-smooth) both;
+}
+
+.latestGrid > *:nth-child(1) {
+  animation-delay: 90ms;
+}
+
+.latestGrid > *:nth-child(2) {
+  animation-delay: 160ms;
+}
+
+.latestGrid > *:nth-child(3) {
+  animation-delay: 230ms;
+}
+
+.latestGrid > *:nth-child(4) {
+  animation-delay: 300ms;
 }
 
 @media (max-width: 920px) {
