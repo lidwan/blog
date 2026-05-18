@@ -9,12 +9,17 @@
 
 <url>
   <loc>https://lsblk.dev/</loc>
-  <lastmod>2026-04-05T13:53:26+00:00</lastmod>
+  <lastmod>2026-05-18T07:19:44+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://lsblk.dev/posts/self-hosting-the-subscription-detox-i-didnt-know-i-needed</loc>
   <lastmod>2026-04-05T13:53:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://lsblk.dev/posts/building-a-highly-available-dns-resolver-on-aws-with-unbound-auto-scaling-nlb-and-cloudwatch</loc>
+  <lastmod>2026-05-18T07:19:44+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
