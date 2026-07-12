@@ -9,8 +9,13 @@
 
 <url>
   <loc>https://lsblk.dev/</loc>
-  <lastmod>2026-05-18T07:19:44+00:00</lastmod>
+  <lastmod>2026-07-04T00:00:00+00:00</lastmod>
   <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://lsblk.dev/posts/building-makanak-jo-from-full-stack-app-to-production-deployment</loc>
+  <lastmod>2026-07-12T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
   <loc>https://lsblk.dev/posts/self-hosting-the-subscription-detox-i-didnt-know-i-needed</loc>
