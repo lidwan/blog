@@ -193,6 +193,20 @@ I also configured alerts for things like:
 
 That makes it much easier to catch issues before they turn into "why is everything suddenly on fire?" moments.
 
+## Bringing it all together with a personal dashboard
+
+As the number of services grew, opening a dozen separate dashboards stopped being charming and started becoming annoying. So I built Homebase, a private dashboard that pulls the most useful information from each service into one place.
+
+It gives me a live overview of my NetBird network, service uptime, DNS filtering, internet performance, Docker stacks, automation workflows, photo storage, and server resources. It is not intended to replace the original administration interfaces. Instead, it answers the questions I care about most: Is everything online? Is anything failing? Are my servers healthy? And which service needs attention?
+
+The dashboard is only accessible from my private network, and the service links open the full administration interfaces when I need deeper control.
+
+![Homebase system pulse showing private network, service uptime, and internet performance](/images/homebase-system-pulse.jpeg)
+
+![Homebase overview of Docker stacks and automation workflow health](/images/homebase-service-workflows.jpeg)
+
+![Homebase server resource monitoring across the self-hosted infrastructure](/images/homebase-server-resources.jpeg)
+
 ## Honorable mentions
 
 These are services I genuinely enjoyed running but eventually retired. Not because they were bad , quite the opposite , but because reality had a few notes.
