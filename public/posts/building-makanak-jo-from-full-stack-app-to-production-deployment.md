@@ -225,7 +225,9 @@ That matters because deployment should not be the place where obvious mistakes a
 
 The build job creates Docker images for the frontend and backend and pushes them to the GitLab Container Registry.
 
-After the images are built, the pipeline creates an encrypted database backup and uploads it to Cloudflare R2. It then configures the daily and weekly automated database backup jobs before deploying the new production images.
+After the images are built, the `backup` stage creates an encrypted database backup and uploads it to Cloudflare R2. The `setup_automated_backups` stage has a different purpose: it is a manual, one-time provisioning step that configures the server to create daily and weekly database backups automatically. I run it once when setting up a server, not on every pipeline. After that, the backup jobs run on their own.
+
+Keeping this setup in the pipeline makes the server more ephemeral and reproducible. If I later decide to move Makanak Jo to a different hosting provider or replace the server, I can provision the backup jobs again from the project instead of manually configuring them from scratch.
 
 ![Figure 3: GitLab CI/CD pipeline for Makanak Jo](/images/makanak-jo-figure-3-gitlab-pipeline.jpeg)
 
@@ -259,7 +261,7 @@ Push code
   -> build Docker images
   -> push images to GitLab Container Registry
   -> create and upload an encrypted database backup
-  -> configure automated daily and weekly backups
+  -> optionally run the one-time manual backup-job setup
   -> deploy SHA-tagged images
   -> Docker Compose updates services
 ```
