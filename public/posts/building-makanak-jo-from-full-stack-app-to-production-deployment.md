@@ -70,7 +70,7 @@ For this project, I wanted to answer the operational questions too:
 
 ## Hosting on a Hetzner VPS
 
-The production environment is hosted on a Hetzner VPS in Germany.
+At launch, the production environment was hosted on a Hetzner VPS in Germany.
 
 I chose a VPS because I wanted control over the runtime. The app is not deployed to a fully managed frontend platform or an abstracted PaaS. It runs as a Docker Compose stack on a server I manage.
 
@@ -474,13 +474,23 @@ Fourth, I want to improve infrastructure reproducibility. Docker Compose works w
 
 Fifth, I want to improve trust and safety features inside the app itself. For a housing platform, reporting, moderation, spam prevention, and stronger verification matter. Email verification is a good start, but phone verification or other trust features may become useful later if the app grows enough to justify the cost.
 
+## What happened after launch
+
+After two full months of trying to make Makanak Jo work, I have decided to stop actively managing it. I did everything I could think of to get people to use the platform. I sent private messages, commented on random posts to encourage people to try it, and ran Facebook and Instagram ads.
+
+The response was encouraging in some ways. I received a lot of support, likes, and amazing comments in university Facebook groups. But the actual demand was much smaller than the level of interest suggested. The service is very niche in Jordan. Only three people added rooms to the platform. Even though the site averaged around 1,000 real visitors per day, not bots, most visitors left almost immediately. My guess is that many of them clicked through from the Facebook or Instagram ads without having an immediate need for the service.
+
+Ultimately, it just did not take off. I am taking that as a learning experience rather than a failure. It gave me the chance to put the skills I learned during my DevSecOps internship into practice, from securing and deploying the app to operating a real public service and learning from its usage.
+
+I will leave the site functional, but I will no longer manage the infrastructure myself. That level of ongoing work is too much for a project that did not gain traction, so I moved the frontend to Vercel, the backend to Railway, and the database to Neon, using their generous free tiers. This keeps the project alive as a showcase and leaves the door open for people to use it again. If demand returns, I would be happy to move everything back to a self-managed Hetzner VPS.
+
 ## Conclusion
 
 Makanak Jo started as a local shared-room housing app for Jordan, but it became a much bigger project about building and operating a real full-stack service.
 
 The app uses Next.js, Express, TypeScript, PostgreSQL, PostGIS, Drizzle, Docker, Nginx, Cloudflare Tunnel, GitLab CI/CD, and S3-compatible storage.
 
-The production environment runs on a Hetzner VPS in Germany with no inbound firewall access. Public traffic reaches the app through Cloudflare Tunnel, and private administration happens through my self-hosted NetBird VPN without exposing SSH to the internet.
+The original production environment ran on a Hetzner VPS in Germany with no inbound firewall access. Public traffic reached the app through Cloudflare Tunnel, and private administration happened through my self-hosted NetBird VPN without exposing SSH to the internet.
 
 That deployment model was one of the most important parts of the project.
 
