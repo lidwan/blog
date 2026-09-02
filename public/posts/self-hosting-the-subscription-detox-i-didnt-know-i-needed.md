@@ -19,7 +19,7 @@ There are two main places to self-host services:
 - At home, on a homelab
 - In the cloud, on a VPS
 
-A homelab can be anything from an old laptop you turned into a server to an actual rack-mounted machine humming away in the corner of your house. In my case, it is an old laptop running 24/7.
+A homelab can be anything from an old laptop you turned into a server to an actual rack-mounted machine humming away in the corner of your house. In my case, it is an old laptop running Proxmox VE 24/7. Inside Proxmox, I have an Ubuntu VM running the vast majority of my Dockerized services, alongside lightweight LXC containers for specific standalone tools.
 
 I use both home hosting and cloud hosting, depending on what the service needs.
 
@@ -69,25 +69,27 @@ With that out of the way, here are the services I host.
 
 ### [NetBird](https://github.com/netbirdio/netbird) Management
 
-The NetBird management server and relay infrastructure live on my VPS. This is the backbone of my entire networking setup , everything described in the sections above depends on it running. It handles peer authentication, network policies, DNS, and route advertisements, while the relay infrastructure makes sure devices can always connect even when direct peer-to-peer connections are not possible.
+The NetBird management server and relay infrastructure live on my primary VPS. This is the backbone of my entire networking setup, everything described in the sections above depends on it running. It handles peer authentication, network policies, DNS, and route advertisements, while the relay infrastructure makes sure devices can always connect even when direct peer-to-peer connections are not possible.
 
 NetBird ships with Traefik as its default reverse proxy, but I also run Caddy alongside it for handling the DNS challenges and internal HTTPS setup described in the sections above.
 
 If this goes down, the rest of the setup gets very lonely very fast.
 
+### [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) (Semi-Public DNS)
+
+I run a dedicated AdGuard Home instance on a new Oracle Cloud VPS to provide ad and tracker blocking for myself and my family across all our devices.
+
+Running a DNS resolver in the cloud can quickly turn into a security disaster if you leave standard port 53 open to the public (hello, open resolver and DDoS reflection attacks). To keep things rock-solid and secure, I run it semi-publicly with a few strict constraints:
+
+- **DNS-over-TLS (DoT) only:** Only port 853 is exposed to the outside world. Standard unencrypted port 53 is completely closed.
+- **Admin dashboard on NetBird:** The web administration interface is locked down entirely to my NetBird network. If you are not on the mesh, the dashboard does not exist.
+- **Strict Client ID routing:** AdGuard is configured to only answer queries directed to specific, long client IDs via TLS SNI. If a random scanner or bot queries `blahblah.dns.domain.com` or the bare domain, it gets zero response. But when a family member's phone connects to `longclientidiconfigured.dns.domain.com`, AdGuard happily filters ads and resolves the query.
+
+This setup allows me to configure native Private DNS on Android and mobile configuration profiles on iOS for family members. Everyone gets encrypted, ad-free internet wherever they go without needing full-time VPN connections running in the background.
+
 ### [Beszel](https://github.com/henrygd/beszel) client
 
-My VPS also runs a Beszel client, which ties into the monitoring setup I use on my home server. More on that in a bit.
-
-## Services I host on both
-
-### [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome)
-
-I use AdGuard Home to block ads and trackers across my entire network, and I run it in both places for good reason.
-
-The primary instance lives on my home server. DNS benefits a lot from being local, and hosting it at home gives me the best latency. It also avoids situations where requests get routed based on the VPS location instead of my actual location, which can sometimes lead to less optimal CDN endpoints. In simple terms: local DNS feels faster because it usually is.
-
-The backup instance runs on my VPS, giving me a fallback whenever the primary is unreachable. Because I set both in my NetBird DNS settings, any device connected to my network gets network-wide ad and tracker blocking wherever I am. At home, on the go, does not matter. The ads do not stand a chance either way.
+My VPS instances also run Beszel clients, which tie into the central monitoring setup I use on my home server. More on that in a bit.
 
 ## Services I host on my home server
 
@@ -119,21 +121,18 @@ It is one of those services that sounds niche until you realize how many things 
 
 It just sits there, refreshing pages on a schedule, and pings me whenever something is different. Simple, effective, and occasionally the bearer of very good news.
 
-### [Immich](https://github.com/immich-app/immich)
+### [Baïkal](https://github.com/sabre-io/Baikal)
 
-I also self-host Immich, which is honestly one of my favorite services in the whole setup.
+For calendar syncing, I run Baïkal in a dedicated LXC container inside Proxmox.
 
-It is an excellent alternative to Google Photos, with a sleek interface, a mobile app, and locally run machine learning features. Most importantly, my data stays at home. My photos do not need to take a sightseeing trip through someone else's cloud before coming back to me.
+Baïkal is a lightweight, purpose-built CalDAV and CardDAV server. On macOS, it syncs seamlessly with Fantastical, and on Android, it talks to DAVx⁵. My calendars and tasks stay perfectly in sync across all devices without relying on Google Calendar or Apple iCloud.
 
-For a self-hosted service, it feels surprisingly polished.
+Because calendar syncing needs to happen reliably without draining phone battery by keeping NetBird connected 24/7, I made Baïkal publicly reachable through a `cloudflared` (Cloudflare Tunnel) sidecar. But "publicly reachable" comes with serious layers of defense:
 
-### [Nextcloud](https://github.com/nextcloud/server)
+1. **Cloudflare WAF geo-blocking:** At the Cloudflare edge, strict security rules drop traffic from every single country in the world except the specific country I am currently located in.
+2. **Restricted admin dashboard:** The Baïkal web administration interface is strictly locked to my NetBird network. Even if someone matches the geo-rule, the administrative backend is completely unreachable from the public internet.
 
-I self-host Nextcloud, and while it can do approximately a thousand things, my main use for it is calendar and task syncing.
-
-On my Mac, it syncs beautifully with Fantastical, and on Android, it talks to DAVx⁵. The result is that my calendar and tasks stay perfectly in sync across all my devices without a single Google or Apple server involved in the conversation.
-
-Beyond that, Nextcloud is essentially a self-hosted Swiss Army knife. It can replace Google Drive, handle file syncing, manage contacts, and probably do your taxes if someone writes a plugin for it. It is one of those services where the hardest part is resisting the urge to enable every single app in the marketplace.
+It is lean, fast, and does one job exceptionally well.
 
 ### [Vaultwarden](https://github.com/dani-garcia/vaultwarden)
 
@@ -193,11 +192,36 @@ I also configured alerts for things like:
 
 That makes it much easier to catch issues before they turn into "why is everything suddenly on fire?" moments.
 
+## How I handle backups
+
+A self-hosted setup without a solid backup strategy is just an elaborate countdown to disaster. Hardware degrades, updates occasionally break things, and a single late-night terminal mistake can ruin your entire week.
+
+Here is how I keep my data protected across both cloud and home:
+
+### Cloud VPS Backups
+
+The NetBird management server holds the configuration, encryption keys, and network policies for my entire mesh. If that database disappears, re-registering every peer and rebuilding network policies would be a nightmare.
+
+On the VPS running NetBird, a scheduled cron job handles the heavy lifting:
+1. It takes a fresh backup of the NetBird SQLite management database.
+2. It encrypts the database backup and uploads it offsite to Cloudflare R2 object storage.
+3. It bundles that encrypted backup alongside a full copy of all server configuration files into a zip archive and sends that zip securely to my home server over the NetBird network.
+
+This gives me both an encrypted offsite cloud backup in Cloudflare R2 and an independent local backup sitting right on my own hardware.
+
+### Home Server Backups
+
+On the home front, Proxmox VE makes disaster recovery almost effortless.
+
+I have automated Proxmox backups running twice a day. Every single virtual machine (including the primary Ubuntu VM hosting all Docker stacks) and every LXC container gets fully backed up directly to dedicated external storage.
+
+If a container breaks or an update goes sideways, there is zero drama. I can restore the entire VM or container in minutes and keep moving.
+
 ## Bringing it all together with a personal dashboard
 
 As the number of services grew, opening a dozen separate dashboards stopped being charming and started becoming annoying. So I built Homebase, a private dashboard that pulls the most useful information from each service into one place.
 
-It gives me a live overview of my NetBird network, service uptime, DNS filtering, internet performance, Docker stacks, automation workflows, photo storage, and server resources. It is not intended to replace the original administration interfaces. Instead, it answers the questions I care about most: Is everything online? Is anything failing? Are my servers healthy? And which service needs attention?
+It gives me a live overview of my NetBird network, service uptime, DNS filtering, internet performance, Docker stacks, automation workflows, and server resources. It is not intended to replace the original administration interfaces. Instead, it answers the questions I care about most: Is everything online? Is anything failing? Are my servers healthy? And which service needs attention?
 
 The dashboard is only accessible from my private network, and the service links open the full administration interfaces when I need deeper control.
 
@@ -222,6 +246,14 @@ After a month, though, I decided to move both sites back to Vercel. Their free t
 Umami is a lightweight, privacy-focused analytics platform, and I ran it for about a month alongside Coolify. It was a genuinely nice alternative to Google Analytics, no cookies, no creepy tracking scripts, just clean stats. I mostly wanted to try running my own analytics stack and see what self-hosted observability looks like in practice.
 
 But with Vercel's free tier already including built-in analytics, maintaining a separate self-hosted analytics service for sites that barely get any traffic did not make much sense. It was a fun experiment and I am glad I tried it, but Vercel's built-in analytics covers everything I need without the extra moving parts.
+
+### [Immich](https://github.com/immich-app/immich)
+
+Immich is genuinely one of the most impressive open-source projects in the self-hosting ecosystem. It is a full Google Photos replacement with a polished mobile app, facial recognition, and locally run machine learning that feels magic.
+
+I self-hosted it for a good while and loved the experience. But over time, I realized I already had plenty of redundant automated backups in place for all my photos (both cloud and local). Having a dedicated, resource-heavy photo management platform on top of existing backups ended up feeling like extra operational overhead for a problem I had already solved.
+
+It is an extraordinary tool that I would recommend in a heartbeat to anyone looking to de-Google their photo library, but retiring it helped keep my active stack lean and low-maintenance.
 
 ## Do I actually need all of this?
 
@@ -249,7 +281,7 @@ Are those feelings positive? Not especially.
 
 But free is free, and for now that has won the argument.
 
-At the moment, all the cloud-hosted services I mentioned are running on an Oracle Always Free VPS instance.
+At the moment, all the cloud-hosted services I mentioned are running on Oracle Always Free VPS instances.
 
 I also found a very helpful guide by the creator of AIOStreams that explains how to get a powerful free VPS from Oracle:
 
