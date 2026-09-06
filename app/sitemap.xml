@@ -9,7 +9,7 @@
 
 <url>
   <loc>https://lsblk.dev/</loc>
-  <lastmod>2026-07-19T00:00:00+00:00</lastmod>
+  <lastmod>2026-09-06T00:00:00+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
@@ -24,7 +24,7 @@
 </url>
 <url>
   <loc>https://lsblk.dev/posts/building-a-highly-available-dns-resolver-on-aws-with-unbound-auto-scaling-nlb-and-cloudwatch</loc>
-  <lastmod>2026-05-18T07:19:44+00:00</lastmod>
+  <lastmod>2026-09-06T07:19:44+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
