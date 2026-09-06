@@ -8,6 +8,9 @@ This website was built using **Next.js**, **Tailwind CSS** for quick responsive 
 #### Adding a New Post  
 Adding a new post is extremely easy! I simply write a new post in a note-taking app (such as Notion), export it to **Markdown (.md)**, add that `.md` file to this repo, and update `posts.js` with the post's metadata (title, description, etc.). Everything else is **automatically handled** by the website!  
 
+#### Adding a Short Link
+Short links are defined in `lib/redirects.mjs` and redirect permanently to the canonical post URL. Add a `"/short-path": "/posts/post-id"` entry there for each new link.
+
 #### What's next?  
 - Making a logo for the blog  
 
