@@ -10,6 +10,8 @@ The basic idea is simple is clients send DNS queries to a Network Load Balancer,
 
 I am not pretending this is a production-ready DNS for a company. The point was to practice how the AWS pieces fit together and to make the result observable enough that I could actually understand what was happening.
 
+> **Update:** This article documents the original manually assembled/Golden AMI version. The current reproducible implementation is Terraform-managed and is available in the [GitHub repository](https://github.com/lidwan/aws-ha-recursive-dns-terraform). The Terraform version provisions the networking, Launch Template, Auto Scaling Group, NLB, IAM, CloudWatch log group, and dashboard.
+
 ## The problem I wanted to solve
 
 Running one DNS resolver on one VM is easy enough.
@@ -493,7 +495,7 @@ There are a lot of things I would improve before treating this like a serious pr
 
 - I would move the EC2 instances into private subnets. The NLB should be the public entry point, and the resolver instances should not need public IPs.
 
--  I would rebuild the whole thing with Infrastructure as Code using Terraform or CloudFormation. I built this as a learning project, but manually created infrastructure is harder to review, reproduce, and clean up.
+-  I have now rebuilt the infrastructure as a reproducible Terraform implementation. It provisions the networking, Launch Template, Auto Scaling Group, NLB, IAM, CloudWatch log group, and dashboard. The Golden AMI workflow described earlier remains as historical context for the original version.
 
 -  I would make the client allowlisting stricter. The broad `0.0.0.0/0 allow` Unbound rule was only for testing and should be replaced with a real allowlist.
 
