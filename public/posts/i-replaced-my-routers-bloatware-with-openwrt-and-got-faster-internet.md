@@ -32,6 +32,8 @@ I set up proper VLANs, and even the guest Wi-Fi got its own VLAN. That might sou
 
 I also got dashboards showing information I simply could not obtain before. Instead of guessing what the router was doing, I could actually see more of what was happening on my network.
 
+There was another improvement I did not expect: the temperature. Under the OEM firmware, the router used to get very hot, hot enough that I would sometimes wonder whether it was slowly cooking its own hardware. After switching to OpenWrt, it is barely warm to the touch. I do not have perfectly scientific before-and-after temperature logs, but the difference is obvious.
+
 That is the part I enjoy most about OpenWrt. It does not just give you a different interface. It gives you control. The router starts feeling less like an appliance that happens to sit between your devices and the internet, and more like an actual piece of network infrastructure that you can understand and shape.
 
 And then came the unexpected part: the internet got faster.
@@ -42,22 +44,9 @@ I tested this with a wired connection through the same upstream router, keeping 
 
 Here is what I saw:
 
-- **Download speed:** 240 Mbps with the OEM firmware → 320 Mbps with OpenWrt
-- **Upload speed:** 105 Mbps with the OEM firmware → 160 Mbps with OpenWrt
-- **Ping:** The same with both firmware versions
-- **Jitter:** All over the place before → stable at 0.7 ms for both download and upload with OpenWrt
-- **Download latency:** Stable average of 43 ms → average of 5 ms
-- **Upload latency:** Very unstable average of 120 ms, sometimes spiking to 700 ms → stable average of 3 ms
+On the OEM firmware, the wired test reached **240 Mbps down and 105 Mbps up**. With OpenWrt, it reached **320 Mbps down and 160 Mbps up**, which is above my 300/150 plan. Basic ping stayed the same, but the connection behaved completely differently under load: jitter went from all over the place to a steady **0.7 ms** in both directions, download latency fell from a stable **43 ms average to 5 ms**, and upload latency dropped from a very unstable **120 ms average, with spikes up to 700 ms, to a stable 3 ms**.
 
-The speed increase was nice. Going from 240 Mbps down to 320 Mbps, and from 105 Mbps up to 160 Mbps, is not exactly subtle when my plan is 300/150.
-
-But the latency changes were the real shock.
-
-Download latency went from a stable average of 43 ms to an average of 5 ms. Upload latency went from a very unstable average of 120 ms, with occasional spikes all the way to 700 ms, to a stable average of 3 ms.
-
-That is a wild improvement.
-
-The basic ping itself stayed the same, which makes the result even more interesting. The problem was not simply distance to the test server. Whatever the OEM firmware was doing, it was doing something very weird around upload latency.
+The extra throughput was nice, but the latency change was the real shock. Whatever the OEM firmware was doing, it was doing something very weird around upload latency.
 
 ## Faster, more visible, and safer
 
