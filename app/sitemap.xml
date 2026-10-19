@@ -23,6 +23,11 @@
   <priority>0.80</priority>
 </url>
 <url>
+  <loc>https://lsblk.dev/posts/my-self-hosted-dns-died-at-1-am-so-i-moved-to-nextdns</loc>
+  <lastmod>2026-10-19T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>https://lsblk.dev/posts/i-replaced-my-routers-bloatware-with-openwrt-and-got-faster-internet</loc>
   <lastmod>2026-09-12T00:00:00+00:00</lastmod>
   <priority>0.80</priority>
