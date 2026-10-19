@@ -12,7 +12,7 @@ For a while, all of my DNS ran through [AdGuard Home](https://github.com/Adguard
 
 It ran semi-publicly. The resolver was reachable from the internet, but only over DNS-over-TLS (DoT) on port 853. Plain DNS on port 53 was closed, because an open resolver on the public internet is basically an invitation for every scanner and DDoS reflection botnet on the planet.
 
-The real gatekeeping came from AdGuard Home's client IDs. In case you did not know, AdGuard Home can identify encrypted DNS clients using a client ID, and for DoT that ID is sent as a subdomain in the TLS server name. So instead of pointing a device at `dns.domain.tld`, you point it at `yourclientid.dns.domain.tld`, and AdGuard knows exactly who is asking. I generated a very long, random string for each client ID, long enough that nobody is guessing it by accident, or on purpose.
+The real gatekeeping came from AdGuard Home's client IDs. In case you did not know, AdGuard Home can identify encrypted DNS clients using a client ID, and for DoT that ID is sent as a subdomain in the TLS server name. So instead of pointing a device at `dns.domain.tld`, you point it at `yourclientid.dns.domain.tld`, and AdGuard knows exactly who is asking. I generated a very long, random string for each client ID, long enough that nobody is guessing it by accident, or on purpose. AdGuard Home was configured to only answer requests carrying one of those client IDs, so a request without one got no answer at all.
 
 Then I put [fail2ban](https://github.com/fail2ban/fail2ban) on top of it. Any IP that reached AdGuard Home without a client ID it recognized got banned. Not after five tries. Not after three. One. A stranger got exactly one attempt, and after that, the server simply stopped existing for them. The only way in was the correct client ID.
 
@@ -44,7 +44,7 @@ The backup was fine. There was just nowhere to put it.
 
 That left me with two options, and I did not love either of them:
 
-1. **Restore onto a larger instance.** Bigger instances were available, but that meant paying for resources I did not need. AdGuard Home is very lightweight, and paying extra every month for CPU and RAM that a DNS resolver will never touch felt ridiculous.
+1. **Restore onto a larger instance.** Bigger instances were available, but AdGuard Home is very lightweight, and paying extra every month for CPU and RAM that a DNS resolver will never touch felt ridiculous.
 2. **Move to a different cloud provider.** That meant spending hours migrating my setup somewhere else and testing everything all over again.
 
 Neither of those is a fun decision to make before breakfast.
@@ -53,7 +53,7 @@ Neither of those is a fun decision to make before breakfast.
 
 First things first: the house needed working DNS again.
 
-I spun up a local AdGuard Home instance on my home server and pointed the home network at it. That brought DNS back for everything at home, ads were blocked again, and the internet "started working" again.
+I spun up a local AdGuard Home instance on my home server and pointed the home network at it. That brought DNS back for everything at home, ads were blocked again, and the internet "started working."
 
 But that only solved the problem while we were at home.
 
@@ -67,7 +67,7 @@ A home-only resolver works great while you are on home Wi-Fi. The moment you lea
 
 A DoT resolver on the public internet avoided all of that. The phone's built-in Private DNS setting talks to it directly, from anywhere, with no tunnel required.
 
-So moving it home permanently was off the table. The local instance was a band-aid while I figured out a more permanent solution.
+So moving it home for good was off the table. The local instance was a band-aid while I figured out a more permanent solution.
 
 ## Weighing the options
 
@@ -108,4 +108,4 @@ But this outage taught me that the question is not just "can I host this myself?
 
 For most of my services, the answer is "not much." For DNS, the answer was "everything stops."
 
-Sometimes the best lesson from doing something yourself is learning when to let someone else handle it. DNS is now one of those things, and at least now I can sleep knowing my DNS will most likely not fail in the middle of the night.
+I said it about Coolify, and apparently I needed to learn it twice: sometimes the best lesson from doing something yourself is learning when to let someone else handle it. DNS is now one of those things, and at least I can sleep knowing it will most likely not fail in the middle of the night.
