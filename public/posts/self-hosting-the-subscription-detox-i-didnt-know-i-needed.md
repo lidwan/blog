@@ -249,6 +249,8 @@ But with Vercel's free tier already including built-in analytics, maintaining a 
 
 ### [Immich](https://github.com/immich-app/immich)
 
+> **Update:** I have since found a photo setup that fits me much better: a self-hosted Ente server backed by Backblaze B2, with end-to-end encryption and a Mac app that keeps a local backup in sync on its own. The full story is in [I Self-Hosted Ente and It Replaced My Photo Backup System](/posts/i-self-hosted-ente-and-it-replaced-my-photo-backup-system).
+
 Immich is genuinely one of the most impressive open-source projects in the self-hosting ecosystem. It is a full Google Photos replacement with a polished mobile app, facial recognition, and locally run machine learning that feels magic.
 
 I self-hosted it for a good while and loved the experience. But over time, I realized I already had plenty of redundant automated backups in place for all my photos (both cloud and local). Having a dedicated, resource-heavy photo management platform on top of existing backups ended up feeling like extra operational overhead for a problem I had already solved.

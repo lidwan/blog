@@ -9,8 +9,13 @@
 
 <url>
   <loc>https://lsblk.dev/</loc>
-  <lastmod>2026-09-12T00:00:00+00:00</lastmod>
+  <lastmod>2026-10-19T00:00:00+00:00</lastmod>
   <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://lsblk.dev/posts/i-self-hosted-ente-and-it-replaced-my-photo-backup-system</loc>
+  <lastmod>2026-10-19T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
   <loc>https://lsblk.dev/posts/building-makanak-jo-from-full-stack-app-to-production-deployment</loc>
@@ -24,7 +29,7 @@
 </url>
 <url>
   <loc>https://lsblk.dev/posts/self-hosting-the-subscription-detox-i-didnt-know-i-needed</loc>
-  <lastmod>2026-07-19T00:00:00+00:00</lastmod>
+  <lastmod>2026-10-19T00:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
