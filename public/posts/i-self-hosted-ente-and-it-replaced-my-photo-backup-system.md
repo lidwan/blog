@@ -43,19 +43,19 @@ For storage, I went with a [Backblaze B2](https://www.backblaze.com/cloud-storag
 
 B2 currently costs **$6.95 per TB per month**, billed for what you actually store, and the first 10 GB are free. Egress is also free up to three times your average monthly storage, which matters for a photo library that occasionally needs to be downloaded in full, like when setting up a new device or a local export (more on that in a bit).
 
-The best part is that Backblaze never sees my photos. Since everything is encrypted on my devices before it is uploaded, all B2 holds is a bucket full of encrypted blobs. They store my data without being able to look at it, which is exactly how I think cloud storage should work.
+The best part is that Backblaze never sees my photos. All B2 holds is a bucket full of encrypted blobs. They store my data without being able to look at it, which is exactly how I think cloud storage should work.
 
 ### The Ente server
 
 With the bucket ready, I installed the Ente server and pointed it at B2.
 
-Ente comes as a whole stack, which surprised me in a good way. The same server that handles Ente Photos also handles Ente Auth.
+Ente comes as a whole stack. The same server that handles Ente Photos also handles Ente Auth.
 
-### Ente Auth finally syncs
+### Ente Auth now syncs too
 
 Before this, I used Ente Auth completely offline, with no sync at all. That is great for privacy, but it also means every device keeps its own separate set of codes.
 
-Now my Ente Auth apps sync through my own server. My 2FA codes are end-to-end encrypted, backed up, and in sync across devices, and the only server involved is one that I run.
+Now my Ente Auth apps sync through my own server. My 2FA codes are end-to-end encrypted, backed up, and the same on every device.
 
 I did not set out to fix my 2FA setup. It just came along for free.
 
@@ -65,7 +65,7 @@ The Ente Mac app ended up being one of my favorite parts of the whole setup, mai
 
 ### Watch folders
 
-I have the Mac app watching some folders. Anything new that lands in them gets uploaded to Ente automatically, with each watched folder synced to its own album.
+I have the Mac app watching some folders. Anything new that lands in them gets uploaded to Ente automatically.
 
 No manual uploads, no remembering to drag things into the app. If it lands in the folder, it ends up in Ente.
 
@@ -75,7 +75,7 @@ This is the one that genuinely changed my setup.
 
 The Ente desktop app can export your entire library to a local folder and then keep that export in sync as new photos and videos are added. I have it export-syncing my whole library to a local SSD.
 
-The export contains the original files, organized into folders by album, with their metadata saved next to them. So that SSD is not some proprietary backup format. It is a regular, browsable copy of my entire library that updates itself.
+The export contains the original files, organized into folders by album, with their metadata saved next to them. So what sits on that SSD is not some proprietary backup format. It is a regular, browsable copy of my entire library that updates itself.
 
 One small tip from Ente's docs: do not export into a folder you are also watching for uploads. That is a very efficient way to create duplicates.
 
@@ -85,12 +85,10 @@ This is the part I did not expect.
 
 I went looking for an encrypted photo cloud. What I ended up with also replaced my local backup system.
 
-Without really planning it, I now have:
+Between B2 and the Mac app, I now have:
 
 - **An offsite backup in the cloud**, stored on B2 and end-to-end encrypted.
 - **A local backup on an SSD**, kept up to date automatically by the Mac app.
-- **Synced 2FA codes** through Ente Auth.
-- **Proper photo apps** on Android and Mac that feel like Immich or Google Photos.
 
 Before, I had several copies of my media that I had to manage. Now, Ente manages them for me.
 
@@ -108,6 +106,6 @@ I genuinely love this setup.
 
 Immich is still an incredible project, and if you want a full self-hosted Google Photos replacement running on your own hardware, it is hard to beat. My problem was never a lack of features. It was too many copies and too much maintenance.
 
-Ente solved that in a way I did not expect. I got an encrypted offsite backup, a local SSD backup that maintains itself, photo apps I actually enjoy using, and synced 2FA codes as a bonus. All of it is backed by cheap object storage that cannot see what it is storing.
+Ente solved both. I got an encrypted offsite backup, a local SSD backup that maintains itself, photo apps I actually enjoy using, and synced 2FA codes as a bonus. All of it is backed by cheap object storage that cannot see what it is storing.
 
 Sometimes the best addition to your stack is the one that lets you remove something else.
