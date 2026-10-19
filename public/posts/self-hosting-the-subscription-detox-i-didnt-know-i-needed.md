@@ -77,6 +77,8 @@ If this goes down, the rest of the setup gets very lonely very fast.
 
 ### [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome) (Semi-Public DNS)
 
+> **Update:** I no longer self-host my DNS. After this instance went down at 1 AM and took every device in the house with it, I moved to NextDNS. The full story is in [My Self-Hosted DNS Died at 1 AM, So I Moved to NextDNS](/posts/my-self-hosted-dns-died-at-1-am-so-i-moved-to-nextdns).
+
 I run a dedicated AdGuard Home instance on a new Oracle Cloud VPS to provide ad and tracker blocking for myself and my family across all our devices.
 
 Running a DNS resolver in the cloud can quickly turn into a security disaster if you leave standard port 53 open to the public (hello, open resolver and DDoS reflection attacks). To keep things rock-solid and secure, I run it semi-publicly with a few strict constraints:
